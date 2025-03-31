@@ -17,15 +17,22 @@
             <div class="main-content-showcase pt-4 px-sm-3">
               <h1 class="mb-3 display-4">Showcase de Componentes</h1>
               <p class="lead mb-5">
-                Demonstração dos Web Componentes `br-*` (v. 2.0.0-next.26),
+                Demonstração dos Web Componentes `br-*` (v. 2.0.0-next.33),
                 focando nas 3 densidades (`small`, `medium`, `large`) quando
                 aplicável e outros atributos relevantes.
               </p>
 
               <!--Seção Avatar -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Avatar</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Avatar</h2>
+                  <br-message
+                    state="danger"
+                    message="Erro na dimensao do ícone quando utilizado com o button cirle"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -170,9 +177,16 @@
               </div>
 
               <!-- Seção Button -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Button</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Button</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -314,9 +328,16 @@
               </div>
 
               <!--Seção Breadcrumb -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Breadcrumb</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Breadcrumb</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -366,9 +387,16 @@
               </div>
 
               <!--Seção Checkbox -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Checkbox</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Checkbox</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -471,9 +499,16 @@
               </div>
 
               <!--Seção Checkgroup -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Checkgroup</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Checkgroup</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -581,14 +616,18 @@
               </div>
 
               <!--Seção Collapse -->
-              <div class="card mb-4">
+              <div class="card mb-5 shadow-sm">
                 <div
                   class="card-header d-flex justify-content-between align-items-center"
                 >
-                  <h2 class="h5 mb-0">Collapse</h2>
-                  <span class="badge bg-warning text-dark"
-                    >Problema no CSS (?)</span
-                  >
+                  <h2 class="h1 mb-0">Collapse</h2>
+                  <br-message
+                    state="warning"
+                    message="Problema no CSS (?)"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -666,14 +705,18 @@
               </div>
 
               <!--Seção Divider -->
-              <div class="card mb-4">
+              <div class="card mb-5 shadow-sm">
                 <div
                   class="card-header d-flex justify-content-between align-items-center"
                 >
-                  <h2 class="h5 mb-0">Divider</h2>
-                  <span class="badge bg-warning text-dark"
-                    >Problema no CSS (?)</span
-                  >
+                  <h2 class="h1 mb-0">Divider</h2>
+                  <br-message
+                    state="warning"
+                    message="Problema no CSS (?)"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -756,14 +799,18 @@
               </div>
 
               <!--Seção Dropdown -->
-              <div class="card mb-4">
+              <div class="card mb-5 shadow-sm">
                 <div
                   class="card-header d-flex justify-content-between align-items-center"
                 >
-                  <h2 class="h5 mb-0">Dropdown</h2>
-                  <span class="badge bg-warning text-dark"
-                    >Ajustar Responsividade (?)</span
-                  >
+                  <h2 class="h1 mb-0">Dropdown</h2>
+                  <br-message
+                    state="warning"
+                    message="Ajustar Responsividade (?)"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -849,9 +896,16 @@
               </div>
 
               <!--Seção Icon -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Icon</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Icon</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -984,9 +1038,16 @@
               </div>
 
               <!--Seção Input -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Input</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Input</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1017,9 +1078,16 @@
               </div>
 
               <!--Seção Item -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Item</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Item</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1193,9 +1261,16 @@
               </div>
 
               <!--Seção List -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">List</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">List</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1267,9 +1342,16 @@
               </div>
 
               <!--Seção Loading -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Loading</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Loading</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1328,9 +1410,16 @@
               </div>
 
               <!--Seção Message -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Message</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Message</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1449,9 +1538,16 @@
               </div>
 
               <!--Seção Radio -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Radio</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Radio</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1566,9 +1662,16 @@
               </div>
 
               <!--Seção Select -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Select</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Select</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1676,9 +1779,16 @@
               </div>
 
               <!--Seção Switch -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Switch</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Switch</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1818,9 +1928,16 @@
               </div>
 
               <!--Seção Tag (REVISADA) -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Tag</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Tag</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -1928,9 +2045,16 @@
               </div>
 
               <!--Seção Textarea -->
-              <div class="card mb-4">
-                <div class="card-header">
-                  <h2 class="h5 mb-0">Textarea</h2>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Textarea</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
                 </div>
                 <div class="card-body">
                   <p class="card-text">
@@ -2070,16 +2194,27 @@
                   </div>
                 </div>
               </div>
-              
+
               <!--Seção Upload -->
-              <div class="card mb-4">
-                <div class="card-header"><h2 class="h5 mb-0">Upload</h2></div>
+              <div class="card mb-5 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h1 mb-0">Upload</h2>
+                  <br-message
+                    state="success"
+                    message="Componente OK"
+                    is-feedback
+                    show-icon
+                    class="ms-auto message-feedback-compact"
+                  ></br-message>
+                </div>
                 <div class="card-body">
                   <p class="card-text">
                     Componente para envio de arquivos. O atributo
                     <code>density</code> não é aplicável.
                   </p>
-                  <div class="p-3 border rounded mt-3">
+                  <div
+                    class="example-box p-3 border rounded mt-3 bg-body-tertiary"
+                  >
                     <br-upload
                       id="upload-example-s-full"
                       label="Selecione ou arraste arquivos"
@@ -2089,9 +2224,11 @@
                       state="info"
                     ></br-upload>
                   </div>
-                  <h3 class="h6 mt-4">Exemplos com diferentes atributos</h3>
+                  <h3 class="h6 subsection-title">
+                    Exemplos com diferentes atributos
+                  </h3>
                   <div
-                    class="p-3 border rounded mt-3 d-flex flex-column gap-3 bg-lightest"
+                    class="example-box p-3 border rounded mt-3 d-flex flex-column gap-3 bg-body-tertiary"
                   >
                     <br-upload
                       id="upload-example-multiple"
@@ -2115,7 +2252,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -2125,6 +2261,12 @@
 </template>
 
 <style scoped>
+  /* AJUSTE: Estilos refinados aplicados */
+
+  /* 1. Utilitários de Gap */
+  .gap-1 {
+    gap: 0.25rem;
+  }
   .gap-2 {
     gap: 0.5rem;
   }
@@ -2138,20 +2280,34 @@
     gap: 2rem;
   }
 
+  /* 2. Utilitários de Margem/Padding (Revisar necessidade vs Bootstrap) */
+  /* ... (mantidos para garantir compatibilidade, mas idealmente usar BS) ... */
+  .mb-1 {
+    margin-bottom: 0.25rem !important;
+  }
+  .mb-2 {
+    margin-bottom: 0.5rem !important;
+  }
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
   .mb-4 {
     margin-bottom: 1.5rem !important;
   }
   .mb-5 {
     margin-bottom: 3rem !important;
+  } /* Usado entre cards */
+  .mt-1 {
+    margin-top: 0.25rem !important;
   }
-  .mt-4 {
-    margin-top: 1.5rem !important;
+  .mt-2 {
+    margin-top: 0.5rem !important;
   }
   .mt-3 {
     margin-top: 1rem !important;
   }
-  .mt-2 {
-    margin-top: 0.5rem !important;
+  .mt-4 {
+    margin-top: 1.5rem !important;
   }
   .ms-3 {
     margin-left: 1rem !important;
@@ -2164,24 +2320,12 @@
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
   }
-  .my-3 {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
-  }
   .mx-3 {
     margin-left: 1rem !important;
     margin-right: 1rem !important;
   }
-  .mb-1 {
-    margin-bottom: 0.25rem !important;
-  }
-  .mb-2 {
-    margin-bottom: 0.5rem !important;
-  }
-  .mb-3 {
-    margin-bottom: 1rem !important;
-  }
 
+  /* 3. Estilos para Componentes dentro de Flex Containers */
   .d-flex .br-input,
   .d-flex .br-select,
   .d-flex .br-textarea,
@@ -2189,93 +2333,108 @@
   .d-flex.flex-column .br-select,
   .d-flex.flex-column .br-textarea {
     flex-grow: 1;
-    width: 100%;
-    min-width: 150px;
+    min-width: 180px;
+  }
+  .d-flex.flex-column > * {
+    width: 100%; /* Garante que itens em coluna ocupem a largura */
   }
 
-  .card-header .badge {
-    font-size: 0.75em;
+  /* 4. Estilos Gerais da Página */
+  .template-base {
+    background-color: #f8f9fa;
   }
 
   .main-content-showcase {
-    max-width: 1200px;
     margin: 0 auto;
   }
 
-  .card-body .br-breadcrumb {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 5px;
+  .card {
+    border: none;
   }
 
-  .d-flex.justify-content-evenly {
-    justify-content: space-around !important;
-  }
-  .d-flex.align-items-center {
-    align-items: center !important;
-  }
-  .d-flex.align-items-end {
-    align-items: flex-end !important;
+  .card-header {
+    background-color: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+    font-weight: 500;
+    /* Ajustado para um padding padrão mais comum */
+    padding: 0.75rem 1rem;
   }
 
-  .d-flex.flex-column > * {
-    width: 100%;
-  }
-
-  .card-body h3.h6 {
-    font-size: 0.9rem;
+  /* 5. Estilos para Seções dentro do Card Body */
+  .subsection-title {
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #495057;
-    margin-bottom: 0.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: var(--bs-primary);
+    margin-bottom: 0.35rem;
     border-bottom: 1px solid #e9ecef;
-    padding-bottom: 0.25rem;
-    margin-top: 1.5rem;
+    padding-bottom: 0.35rem;
+    margin-top: 2rem;
   }
-  .card-body h3.h6:first-of-type {
+  .card-body h3.subsection-title:first-of-type {
     margin-top: 1rem;
   }
 
-  .card-body p.card-text > small {
+  .subsection-description small,
+  .subsection-note small {
     font-size: 0.875em;
     color: #6c757d;
     display: block;
     margin-top: 0.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
-  .card-body p.card-text > em {
-    font-size: 0.85em;
+
+  .subsection-note em {
+    font-size: 0.9em;
     color: #6c757d;
     display: block;
   }
 
+  /* 6. Estilos para as Caixas de Exemplo */
+  .example-box {
+    border-color: #dee2e6 !important;
+  }
+  .example-box.p-3 {
+    padding: 1.25rem !important;
+  }
+  .bg-dark {
+    background-color: #212529 !important;
+  }
+  /* Remove background de .bg-lightest se .example-box já tem bg-body-tertiary */
+  .example-box.bg-lightest {
+    background-color: var(
+      --bs-body-tertiary
+    ) !important; /* Override para consistencia */
+  }
+  /* Caso especial onde bg-lightest é usado fora de um example-box */
+  .bg-lightest {
+    background-color: #f8f9fa; /* Garante que ainda funcione se não for example-box */
+  }
+
+  /* 7. Estilos para Itens de Lista e Dropdown */
   .br-list .br-item,
   .br-dropdown .br-item {
     width: 100%;
-    display: flex;
+  }
+  .br-list br-item[is-interactive]:hover,
+  .br-dropdown br-item[role="menuitem"]:hover {
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
-  .bg-dark {
-    background-color: #343a40 !important;
+  /* 8. Estilos para Breadcrumb e Código */
+  .card-body .br-breadcrumb {
+    width: 100%;
+    padding-bottom: 5px;
   }
 
-  .bg-lightest {
-    background-color: #f8f9fa;
+  code {
+    background-color: #e9ecef;
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    color: #d63384;
   }
 
-  .d-flex > span {
-    font-style: italic;
-    color: #6c757d;
-    margin-left: -0.5rem;
-    margin-right: 1rem;
-  }
-
-  .bg-info.bg-opacity-10 {
-    --bs-bg-opacity: 0.1;
-    background-color: rgba(var(--bs-info-rgb), var(--bs-bg-opacity)) !important;
-  }
-
+  /* 9. Estilos :deep() */
   :deep(.meu-icone-colorido) {
     color: #42b883;
     font-size: 2rem;
@@ -2283,5 +2442,35 @@
   }
   :deep(.meu-icone-colorido):hover {
     opacity: 0.7;
+  }
+
+  /* 10. Ajuste para altura do Divider vertical */
+  .vertical-divider-container {
+    height: 50px; /* Altura do container flex */
+    display: flex;
+    align-items: center;
+  }
+
+  /* 11. Margem interna do Card Body */
+  .card-body {
+    margin: 5px 15px;
+    padding-bottom: 10px;
+  }
+
+  /* AJUSTE: Estilos para compactar o br-message no header */
+  .card-header .message-feedback-compact {
+    /* font-size: 0.75em;   */
+    margin-bottom: 0 !important; /* Remove margem */
+    padding: 0.2rem 0.4rem !important; /* Padding menor */
+    align-self: center; /* Alinha verticalmente no centro do header flex */
+    /* Opcional: remover borda se houver */
+    /* border: none !important; */
+  }
+  /* Opcional: Ajustar tamanho do ícone dentro da mensagem compacta */
+  :deep(.message-feedback-compact .br-icon) {
+    /* vertical-align: text-bottom; */ /* Tentar alinhar melhor */
+    /* Ajuste de tamanho se necessário */
+    /* width: 1em; */
+    /* height: 1em; */
   }
 </style>
