@@ -6,6 +6,38 @@
   const toggleDropdown = () => {
     isDropdownProgOpen.value = !isDropdownProgOpen.value;
   };
+
+  // Exemplo de opções para o br-select no formulário
+  const estadosOptions = JSON.stringify([
+    { value: "", label: "Selecione...", disabled: true },
+    { value: "AC", label: "Acre" },
+    { value: "AL", label: "Alagoas" },
+    { value: "AP", label: "Amapá" },
+    { value: "AM", label: "Amazonas" },
+    { value: "BA", label: "Bahia" },
+    { value: "CE", label: "Ceará" },
+    { value: "DF", label: "Distrito Federal" },
+    { value: "ES", label: "Espírito Santo" },
+    { value: "GO", label: "Goiás" },
+    { value: "MA", label: "Maranhão" },
+    { value: "MT", label: "Mato Grosso" },
+    { value: "MS", label: "Mato Grosso do Sul" },
+    { value: "MG", label: "Minas Gerais" },
+    { value: "PA", label: "Pará" },
+    { value: "PB", label: "Paraíba" },
+    { value: "PR", label: "Paraná" },
+    { value: "PE", label: "Pernambuco" },
+    { value: "PI", label: "Piauí" },
+    { value: "RJ", label: "Rio de Janeiro" },
+    { value: "RN", label: "Rio Grande do Norte" },
+    { value: "RS", label: "Rio Grande do Sul" },
+    { value: "RO", label: "Rondônia" },
+    { value: "RR", label: "Roraima" },
+    { value: "SC", label: "Santa Catarina" },
+    { value: "SP", label: "São Paulo" },
+    { value: "SE", label: "Sergipe" },
+    { value: "TO", label: "Tocantins" },
+  ]);
 </script>
 
 <template>
@@ -24,7 +56,9 @@
 
               <!--Seção Avatar -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Avatar</h2>
                   <br-message
                     state="danger"
@@ -178,7 +212,9 @@
 
               <!-- Seção Button -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Button</h2>
                   <br-message
                     state="success"
@@ -329,7 +365,9 @@
 
               <!--Seção Breadcrumb -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Breadcrumb</h2>
                   <br-message
                     state="success"
@@ -388,7 +426,9 @@
 
               <!--Seção Checkbox -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Checkbox</h2>
                   <br-message
                     state="success"
@@ -500,7 +540,9 @@
 
               <!--Seção Checkgroup -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Checkgroup</h2>
                   <br-message
                     state="success"
@@ -897,7 +939,9 @@
 
               <!--Seção Icon -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Icon</h2>
                   <br-message
                     state="success"
@@ -1039,7 +1083,9 @@
 
               <!--Seção Input -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Input</h2>
                   <br-message
                     state="success"
@@ -1079,7 +1125,9 @@
 
               <!--Seção Item -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Item</h2>
                   <br-message
                     state="success"
@@ -1262,7 +1310,9 @@
 
               <!--Seção List -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">List</h2>
                   <br-message
                     state="success"
@@ -1343,7 +1393,9 @@
 
               <!--Seção Loading -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Loading</h2>
                   <br-message
                     state="success"
@@ -1411,7 +1463,9 @@
 
               <!--Seção Message -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Message</h2>
                   <br-message
                     state="success"
@@ -1539,7 +1593,9 @@
 
               <!--Seção Radio -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Radio</h2>
                   <br-message
                     state="success"
@@ -1663,7 +1719,9 @@
 
               <!--Seção Select -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Select</h2>
                   <br-message
                     state="success"
@@ -1780,7 +1838,9 @@
 
               <!--Seção Switch -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Switch</h2>
                   <br-message
                     state="success"
@@ -1929,7 +1989,9 @@
 
               <!--Seção Tag (REVISADA) -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Tag</h2>
                   <br-message
                     state="success"
@@ -2046,7 +2108,9 @@
 
               <!--Seção Textarea -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Textarea</h2>
                   <br-message
                     state="success"
@@ -2197,7 +2261,9 @@
 
               <!--Seção Upload -->
               <div class="card mb-5 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
                   <h2 class="h1 mb-0">Upload</h2>
                   <br-message
                     state="success"
@@ -2252,6 +2318,173 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Seção Formulários -->
+              <div class="card mb-5 shadow-sm">
+                <!-- AJUSTE: Ordem invertida (mensagem antes do título), trocado ms-3 por me-3 -->
+                <div class="card-header d-flex align-items-center">
+                  <br-message
+                    state="success"
+                    message="Exemplo"
+                    is-feedback
+                    show-icon
+                    class="me-3 message-feedback-compact"
+                  ></br-message>
+                  <h2 class="h1 mb-0">Formulários</h2>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">
+                    Exemplo de construção de formulário utilizando os
+                    componentes `br-*`. Este exemplo demonstra um formulário de
+                    cadastro de usuário.
+                  </p>
+                  <h3 class="h6 subsection-title">
+                    Exemplo: Cadastro de Usuário
+                  </h3>
+                  <div
+                    class="example-box p-3 border rounded mt-3 bg-body-tertiary"
+                  >
+                    <form @submit.prevent>
+                      <!-- Adicionado form tag e prevent default  -->
+                      <div class="row g-3">
+                        <!-- Grid com espaçamento  -->
+                        <!-- Nome Completo -->
+                        <div class="col-md-6">
+                          <br-input
+                            id="form-nome"
+                            label="Nome Completo"
+                            placeholder="Digite seu nome completo"
+                            density="medium"
+                            required
+                          ></br-input>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-6">
+                          <br-input
+                            id="form-email"
+                            type="email"
+                            label="Email"
+                            placeholder="seuemail@dominio.com"
+                            density="medium"
+                            required
+                          ></br-input>
+                        </div>
+
+                        <!-- Senha -->
+                        <div class="col-md-6">
+                          <br-input
+                            id="form-senha"
+                            type="password"
+                            label="Senha"
+                            placeholder="Crie uma senha"
+                            density="medium"
+                            required
+                          ></br-input>
+                          <br-message
+                            state="info"
+                            message="Mínimo 8 caracteres."
+                            is-feedback
+                            class="mt-1"
+                          ></br-message>
+                        </div>
+
+                        <!-- Confirmar Senha -->
+                        <div class="col-md-6">
+                          <br-input
+                            id="form-confirma-senha"
+                            type="password"
+                            label="Confirmar Senha"
+                            placeholder="Repita a senha"
+                            density="medium"
+                            required
+                          ></br-input>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="col-md-6">
+                          <br-select
+                            id="form-estado"
+                            label="Estado"
+                            placeholder="Selecione seu estado"
+                            density="medium"
+                            :options="estadosOptions"
+                            required
+                          ></br-select>
+                        </div>
+
+                        <!-- Gênero -->
+                        <div class="col-md-6">
+                          <p class="label mb-2">Gênero:</p>
+                          <div class="d-flex flex-wrap gap-3">
+                            <br-radio
+                              name="genero"
+                              value="M"
+                              label="Masculino"
+                            ></br-radio>
+                            <br-radio
+                              name="genero"
+                              value="F"
+                              label="Feminino"
+                            ></br-radio>
+                            <br-radio
+                              name="genero"
+                              value="O"
+                              label="Outro"
+                            ></br-radio>
+                            <br-radio
+                              name="genero"
+                              value="N"
+                              label="Prefiro não informar"
+                              checked
+                            ></br-radio>
+                          </div>
+                        </div>
+
+                        <!-- Foto de Perfil -->
+                        <div class="col-12">
+                          <br-upload
+                            id="form-foto"
+                            label="Foto de Perfil (Opcional)"
+                            accept="image/*"
+                            :multiple="false"
+                            state="info"
+                          ></br-upload>
+                        </div>
+
+                        <!-- Termos e Newsletter -->
+                        <div class="col-12">
+                          <br-checkbox
+                            name="termos"
+                            label="Li e aceito os termos de uso"
+                            required
+                            class="mb-2"
+                          ></br-checkbox>
+                          <br-switch
+                            name="newsletter"
+                            label="Desejo receber a newsletter"
+                            label-position="right"
+                          ></br-switch>
+                        </div>
+                      </div>
+
+                      <br-divider class="my-4"></br-divider>
+                      <!-- Separador antes dos botões  -->
+
+                      <!-- Botões de Ação  -->
+                      <div class="d-flex justify-content-end gap-3">
+                        <br-button type="reset" emphasis="secondary"
+                          >Limpar</br-button
+                        >
+                        <br-button type="submit" emphasis="primary"
+                          >Cadastrar</br-button
+                        >
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- Fim da Seção Formulários -->
             </div>
           </div>
         </div>
