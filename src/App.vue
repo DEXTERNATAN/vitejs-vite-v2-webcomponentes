@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
 import { estadosOptions as importedEstadosOptions } from "./data/selectOptions";
 
+const webComponentVersion = 'v. 2.0.0-next.33';
 const estadosOptionsString = JSON.stringify(importedEstadosOptions);
 
 const form = ref({
@@ -136,24 +137,81 @@ const cadastrarUsuario = async () => {
     cadastroErro.value = true;
   }
 };
+
+// --- NOVO CÓDIGO PARA O BOTÃO VOLTAR AO TOPO ---
+const showScrollTopButton = ref(false);
+const scrollThreshold = 200; // Pixels para mostrar o botão
+
+const handleScroll = () => {
+  const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+  showScrollTopButton.value = scrollY > scrollThreshold;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Rolagem suave
+  });
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Verifica a posição inicial ao montar
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
   <div class="template-base">
+    <div class="version-tag-container">
+      <br-tag :label="webComponentVersion" density="small" color="bg-secondary"
+        title="Versão dos Web Componentes"></br-tag>
+    </div>
     <main class="d-flex flex-fill mb-5" id="main">
       <div class="container-fluid">
         <div class="row">
           <div class="col">
             <div class="main-content-showcase pt-4 px-sm-3">
               <h1 class="mb-3 display-4">Showcase de Componentes</h1>
-              <p class="lead mb-5">
-                Demonstração dos Web Componentes `br-*` (v. 2.0.0-next.33),
+
+              <br-message state="info" message="Demonstração dos Web Componentes `br-*` (v. 2.0.0-next.33),
                 focando nas 3 densidades (`small`, `medium`, `large`) quando
-                aplicável e outros atributos relevantes.
-              </p>
+                aplicável e outros atributos relevantes." show-icon class="mb-3"></br-message>
+
+
+              <!-- Bloco de Navegação Rápida -->
+              <div class="navigation-quicklinks" id="quicknav" aria-label="Navegação rápida">
+                <h3 class="h5 mb-3">Navegação Rápida:</h3>
+                <div class="d-flex flex-wrap gap-2">
+                  <a href="#avatar" class="br-button" density="small">Avatar</a>
+                  <a href="#button" class="br-button" density="small">Button</a>
+                  <a href="#breadcrumb" class="br-button" density="small">Breadcrumb</a>
+                  <a href="#checkbox" class="br-button" density="small">Checkbox</a>
+                  <a href="#checkgroup" class="br-button" density="small">Checkgroup</a>
+                  <a href="#collapse" class="br-button" density="small">Collapse</a>
+                  <a href="#divider" class="br-button" density="small">Divider</a>
+                  <a href="#dropdown" class="br-button" density="small">Dropdown</a>
+                  <a href="#icon" class="br-button" density="small">Icon</a>
+                  <a href="#input" class="br-button" density="small">Input</a>
+                  <a href="#item" class="br-button" density="small">Item</a>
+                  <a href="#list" class="br-button" density="small">List</a>
+                  <a href="#loading" class="br-button" density="small">Loading</a>
+                  <a href="#message" class="br-button" density="small">Message</a>
+                  <a href="#radio" class="br-button" density="small">Radio</a>
+                  <a href="#select" class="br-button" density="small">Select</a>
+                  <a href="#switch" class="br-button" density="small">Switch</a>
+                  <a href="#tag" class="br-button" density="small">Tag</a>
+                  <a href="#textarea" class="br-button" density="small">Textarea</a>
+                  <a href="#upload" class="br-button" density="small">Upload</a>
+                  <a href="#formularios" class="br-button" density="small">Formulários</a>
+                </div>
+              </div>
 
               <!--Seção Avatar -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="avatar">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Avatar</h2>
                   <br-message state="danger" message="Erro na dimensao do ícone quando utilizado com o button cirle"
@@ -229,7 +287,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!-- Seção Button -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="button">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Button</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -312,7 +370,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Breadcrumb -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="breadcrumb">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Breadcrumb</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -357,7 +415,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Checkbox -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="checkbox">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Checkbox</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -416,7 +474,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Checkgroup -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="checkgroup">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Checkgroup</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -480,7 +538,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Collapse -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="collapse">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Collapse</h2>
                   <br-message state="warning" message="Problema no CSS (?)" is-feedback show-icon
@@ -553,7 +611,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Divider -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="divider">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Divider</h2>
                   <br-message state="warning" message="Problema no CSS (?)" is-feedback show-icon
@@ -623,7 +681,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Dropdown -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="dropdown">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Dropdown</h2>
                   <br-message state="warning" message="Ajustar Responsividade (?)" is-feedback show-icon
@@ -699,7 +757,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Icon -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="icon">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Icon</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -775,7 +833,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Input -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="input">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Input</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -798,7 +856,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Item -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="item">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Item</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -891,7 +949,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção List -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="list">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">List</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -954,7 +1012,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Loading -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="loading">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Loading</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -992,7 +1050,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Message -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="message">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Message</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1051,7 +1109,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Radio -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="radio">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Radio</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1114,7 +1172,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Select -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="select">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Select</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1180,7 +1238,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Switch -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="switch">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Switch</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1246,8 +1304,8 @@ const cadastrarUsuario = async () => {
                 </div>
               </div>
 
-              <!--Seção Tag (REVISADA) -->
-              <div class="card mb-5 shadow-sm">
+              <!--Seção Tag -->
+              <div class="card mb-5 shadow-sm" id="tag">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Tag</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1300,7 +1358,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Textarea -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="textarea">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Textarea</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1377,7 +1435,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!--Seção Upload -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="upload">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Upload</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1407,8 +1465,7 @@ const cadastrarUsuario = async () => {
               </div>
 
               <!-- Seção Formulários -->
-              <!-- Seção Formulários -->
-              <div class="card mb-5 shadow-sm">
+              <div class="card mb-5 shadow-sm" id="formularios">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h2 class="h1 mb-0">Formulários</h2>
                   <br-message state="success" message="Componente OK" is-feedback show-icon
@@ -1496,18 +1553,19 @@ const cadastrarUsuario = async () => {
                   </div>
                 </div>
               </div>
-              <!-- Fim da Seção Formulários -->
             </div>
           </div>
         </div>
       </div>
+      <br-button v-if="showScrollTopButton" class="scroll-top-button" density="large" shape="circle" emphasis="primary"
+        aria-label="Voltar ao topo" @click="scrollToTop">
+        <br-icon icon-name="fa6-solid:arrow-up"></br-icon>
+      </br-button>
     </main>
   </div>
 </template>
 
 <style scoped>
-/* AJUSTE: Estilos refinados aplicados */
-
 /* 1. Utilitários de Gap */
 .gap-1 {
   gap: 0.25rem;
@@ -1529,64 +1587,6 @@ const cadastrarUsuario = async () => {
   gap: 2rem;
 }
 
-/* 2. Utilitários de Margem/Padding (Revisar necessidade vs Bootstrap) */
-/* ... (mantidos para garantir compatibilidade, mas idealmente usar BS) ... */
-.mb-1 {
-  margin-bottom: 0.25rem !important;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem !important;
-}
-
-.mb-3 {
-  margin-bottom: 1rem !important;
-}
-
-.mb-4 {
-  margin-bottom: 1.5rem !important;
-}
-
-.mb-5 {
-  margin-bottom: 3rem !important;
-}
-
-/* Usado entre cards */
-.mt-1 {
-  margin-top: 0.25rem !important;
-}
-
-.mt-2 {
-  margin-top: 0.5rem !important;
-}
-
-.mt-3 {
-  margin-top: 1rem !important;
-}
-
-.mt-4 {
-  margin-top: 1.5rem !important;
-}
-
-.ms-3 {
-  margin-left: 1rem !important;
-}
-
-.my-1 {
-  margin-top: 0.25rem !important;
-  margin-bottom: 0.25rem !important;
-}
-
-.my-2 {
-  margin-top: 0.5rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-.mx-3 {
-  margin-left: 1rem !important;
-  margin-right: 1rem !important;
-}
-
 /* 3. Estilos para Componentes dentro de Flex Containers */
 .d-flex .br-input,
 .d-flex .br-select,
@@ -1599,13 +1599,16 @@ const cadastrarUsuario = async () => {
 }
 
 .d-flex.flex-column>* {
-  width: 100%;
   /* Garante que itens em coluna ocupem a largura */
+  width: 100%;
 }
 
 /* 4. Estilos Gerais da Página */
 .template-base {
   background-color: #f8f9fa;
+  /* position: relative; REMOVIDO */
+  min-height: 100vh;
+  /* padding-top: 40px; REMOVIDO */
 }
 
 .main-content-showcase {
@@ -1620,7 +1623,6 @@ const cadastrarUsuario = async () => {
   background-color: #e9ecef;
   border-bottom: 1px solid #dee2e6;
   font-weight: 500;
-  /* Ajustado para um padding padrão mais comum */
   padding: 0.75rem 1rem;
 }
 
@@ -1733,13 +1735,8 @@ code {
 .card-header .message-feedback-compact {
   /* font-size: 0.75em;   */
   margin-bottom: 0 !important;
-  /* Remove margem */
   padding: 0.2rem 0.4rem !important;
-  /* Padding menor */
   align-self: center;
-  /* Alinha verticalmente no centro do header flex */
-  /* Opcional: remover borda se houver */
-  /* border: none !important; */
 }
 
 /* Opcional: Ajustar tamanho do ícone dentro da mensagem compacta */
@@ -1749,5 +1746,71 @@ code {
   /* Ajuste de tamanho se necessário */
   /* width: 1em; */
   /* height: 1em; */
+}
+
+/* AJUSTE: Estilos para a barra de navegação rápida */
+[id] {
+  scroll-margin-top: 260px;
+}
+
+.navigation-quicklinks {
+  position: sticky;
+  top: 0;
+  /* Retorna ao topo 0, pois não há mais padding no pai */
+  margin-bottom: 20px;
+  z-index: 9999;
+  /* Mantém alto, mas abaixo da tag de versão */
+  background-color: #edf2f7;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-quicklinks .br-button {
+  margin: 2px;
+}
+
+/* AJUSTE: Estilos para o botão de voltar ao topo */
+.scroll-top-button {
+  position: fixed;
+  /* Mantém a posição na tela */
+  bottom: 20px;
+  /* Distância do fundo */
+  right: 20px;
+  /* Distância da direita */
+  z-index: 10000;
+  /* Garante que fique acima de outros elementos */
+  opacity: 0.8;
+  /* Leve transparência (opcional) */
+  transition: opacity 0.3s ease-in-out;
+  /* Transição suave (opcional) */
+}
+
+.scroll-top-button:hover {
+  opacity: 1;
+  /* Opacidade total ao passar o mouse (opcional) */
+}
+
+/* AJUSTE: Estilos para a tag de versão */
+.version-tag-container {
+  position: fixed;
+  top: 10px;
+  /* Distância do topo da viewport */
+  right: 65px;
+  /* Distância da direita da viewport */
+  z-index: 10001;
+  /* Mais alto que a nav e o botão de scroll */
+}
+
+/* Aplica o background diretamente na tag usando :deep se necessário */
+/* Ou use a classe .version-tag-content se preferir */
+:deep(.version-tag-content.br-tag) {
+  background-color: #edf2f7 !important;
+  /* Cor da navegação */
+  color: var(--text-color, #333);
+  /* Garante contraste - ajuste se necessário */
+  border: 1px solid #ccc;
+  /* Adiciona uma borda sutil (opcional) */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  /* Sombra sutil (opcional) */
 }
 </style>
