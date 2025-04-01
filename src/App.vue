@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { ref } from "vue";
+  import { estadosOptions as importedEstadosOptions } from "./data/selectOptions";  
 
   // State for programmatically controlled dropdown
   const isDropdownProgOpen = ref(false);
@@ -7,37 +8,8 @@
     isDropdownProgOpen.value = !isDropdownProgOpen.value;
   };
 
-  // Exemplo de opções para o br-select no formulário
-  const estadosOptions = JSON.stringify([
-    { value: "", label: "Selecione...", disabled: true },
-    { value: "AC", label: "Acre" },
-    { value: "AL", label: "Alagoas" },
-    { value: "AP", label: "Amapá" },
-    { value: "AM", label: "Amazonas" },
-    { value: "BA", label: "Bahia" },
-    { value: "CE", label: "Ceará" },
-    { value: "DF", label: "Distrito Federal" },
-    { value: "ES", label: "Espírito Santo" },
-    { value: "GO", label: "Goiás" },
-    { value: "MA", label: "Maranhão" },
-    { value: "MT", label: "Mato Grosso" },
-    { value: "MS", label: "Mato Grosso do Sul" },
-    { value: "MG", label: "Minas Gerais" },
-    { value: "PA", label: "Pará" },
-    { value: "PB", label: "Paraíba" },
-    { value: "PR", label: "Paraná" },
-    { value: "PE", label: "Pernambuco" },
-    { value: "PI", label: "Piauí" },
-    { value: "RJ", label: "Rio de Janeiro" },
-    { value: "RN", label: "Rio Grande do Norte" },
-    { value: "RS", label: "Rio Grande do Sul" },
-    { value: "RO", label: "Rondônia" },
-    { value: "RR", label: "Roraima" },
-    { value: "SC", label: "Santa Catarina" },
-    { value: "SP", label: "São Paulo" },
-    { value: "SE", label: "Sergipe" },
-    { value: "TO", label: "Tocantins" },
-  ]);
+  // State for programmatically controlled select
+  const estadosOptionsString = JSON.stringify(importedEstadosOptions);
 </script>
 
 <template>
@@ -307,7 +279,8 @@
                       >Ativo</br-button
                     >
                   </div>
-                  <div class="bg-dark p-3 rounded mt-3">
+                  
+                  <div class="d-flex flex-wrap justify-content-evenly align-items-center bg-dark p-3 border mt-3 gap-4">
                     <br-button
                       emphasis="primary"
                       density="medium"
@@ -1753,24 +1726,24 @@
                   >
                     <br-select
                       id="select-small-density-rev"
-                      label="Select Pequeno"
+                      label="Select Pequeno (Dados via string)"
                       placeholder="Densidade: small"
                       density="small"
                       options='[{ "label": "Opção S1", "value": "s1" }, { "label": "Opção S2", "value": "s2" }]'
                     ></br-select>
                     <br-select
                       id="select-medium-density-rev"
-                      label="Select Médio"
+                      label="Select Médio (Dados via string)"
                       placeholder="Densidade: medium"
                       density="medium"
                       options='[{ "label": "Opção M1", "value": "m1" }, { "label": "Opção M2", "value": "m2" }]'
                     ></br-select>
                     <br-select
                       id="select-large-density-rev"
-                      label="Select Grande"
+                      label="Select Grande (Dados via Object Array)"
                       placeholder="Densidade: large"
                       density="large"
-                      options='[{ "label": "Opção L1", "value": "l1" }, { "label": "Opção L2", "value": "l2" }]'
+                      :options="estadosOptionsString"
                     ></br-select>
                   </div>
                   <h3 class="h6 mt-4">2. Seleção Múltipla (`isMultiple`)</h3>
