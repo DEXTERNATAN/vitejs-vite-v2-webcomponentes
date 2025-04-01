@@ -2,7 +2,7 @@
 import { ref, watch, onMounted, onUnmounted } from "vue";
 import { estadosOptions as importedEstadosOptions } from "./data/selectOptions";
 
-const webComponentVersion = 'v. 2.0.0-next.33';
+const webComponentVersion = 'Versão GovBR-DS: v. 2.0.0-next.33';
 const estadosOptionsString = JSON.stringify(importedEstadosOptions);
 
 const form = ref({
@@ -167,8 +167,11 @@ onUnmounted(() => {
 <template>
   <div class="template-base">
     <div class="version-tag-container">
-      <br-tag :label="webComponentVersion" density="small" color="bg-secondary"
-        title="Versão dos Web Componentes"></br-tag>
+      <br-tag label="Ferramenta de Construção: Vite" density="small" class="version-tag-content" title="Build Tool"
+        color="bg-info"></br-tag>
+      <br-tag label="Framework: Vue 3" density="small" class="version-tag-content" title="Framework"
+        color="bg-orange-vivid-50"></br-tag>
+      <br-tag :label="webComponentVersion" density="small" class="version-tag-content" title="Versão GovBR-DS"></br-tag>
     </div>
     <main class="d-flex flex-fill mb-5" id="main">
       <div class="container-fluid">
@@ -180,7 +183,6 @@ onUnmounted(() => {
               <br-message state="info" message="Demonstração dos Web Componentes `br-*` (v. 2.0.0-next.33),
                 focando nas 3 densidades (`small`, `medium`, `large`) quando
                 aplicável e outros atributos relevantes." show-icon class="mb-3"></br-message>
-
 
               <!-- Bloco de Navegação Rápida -->
               <div class="navigation-quicklinks" id="quicknav" aria-label="Navegação rápida">
@@ -1799,6 +1801,8 @@ code {
   /* Distância da direita da viewport */
   z-index: 10001;
   /* Mais alto que a nav e o botão de scroll */
+  display: flex;
+  gap: 5px;
 }
 
 /* Aplica o background diretamente na tag usando :deep se necessário */
