@@ -1,29 +1,15 @@
 <template>
   <br-message state="info" show-icon>
-    Leia com atenção as informações abaixo
+    Atenção: confira as informações abaixo!
   </br-message>
 
-  <div v-html="renderedMarkdown"></div>
+  <div class="br-card rounder-md mb-0 p-4 px-sm-6 bg-card-pesquisa">
+    Este projeto é um showcase completo desenvolvido para demonstrar e testar os
+    webcomponents criados com StencilJS. Inspirado em modelos modernos, como o template
+    AdminLTE, nossa intenção é fornecer uma referência prática e elegante para
+    desenvolvedores, facilitando a integração, customização e reutilização dos componentes
+    em diferentes projetos.
+  </div>
 </template>
 
-<script setup lang="ts">
-import axios from 'axios';
-import MarkdownIt from 'markdown-it';
-import { computed, ref } from 'vue';
-
-const markdownContent = ref('');
-const md = new MarkdownIt();
-
-axios
-  .get('/bibliotecas/wc/govbr-ds-wc-quickstart-vue/README.md')
-  .then((response) => {
-    markdownContent.value = response.data;
-  })
-  .catch((error) => {
-    console.error('Erro ao buscar o arquivo Markdown:', error);
-  });
-
-const renderedMarkdown = computed(() => {
-  return md.render(markdownContent.value);
-});
-</script>
+<script setup lang="ts"></script>

@@ -1,17 +1,21 @@
 <template>
-  <br-footer
+  <footer class="br-footer pt-3" id="footer">
+    <div class="container-fluid">
+      <div class="info">
+        <div class="text-down-01 text-medium pb-3">
+          {{ license }}&nbsp;<strong><a href="">licença de uso</a>.</strong>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- <br-footer
     :text="license"
     :logo="JSON.stringify(logo)"
     id="footer"
     container-fluid="true"
-  ></br-footer>
+  ></br-footer> -->
 </template>
 
 <script setup lang="ts">
-const license: string =
-  'Todo o conteúdo deste site está publicado sob a licença MIT';
-const logo = {
-  url: 'https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/images/logo-negative.png',
-  description: 'Logo de exemplo',
-};
+const license: string = 'Texto destinado a exibição de informações relacionadas à';
 </script>
