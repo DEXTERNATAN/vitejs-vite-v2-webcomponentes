@@ -1,5 +1,5 @@
 <template>
-  <div class="telas-container">
+  <div class="telas-container" role="main">
     <h1>Telas de Exemplo</h1>
 
     <!-- Seção de Telas de Login -->
@@ -19,26 +19,20 @@
                   <div class="screen-body">
                     <div class="login-form">
                       <div class="br-input mb-3">
-                        <label for="login-email">E-mail</label>
-                        <input
+                        <br-input
                           id="login-email"
                           type="email"
+                          label="E-mail"
                           placeholder="seu.email@exemplo.com"
                         />
                       </div>
                       <div class="br-input input-button mb-3">
-                        <label for="login-password">Senha</label>
-                        <input
+                        <br-input
                           id="login-password"
                           type="password"
+                          label="Senha"
                           placeholder="Digite sua senha"
                         />
-                        <!-- <button class="br-button" type="button" aria-label="Exibir senha">
-                          <i class="fas fa-eye" aria-hidden="true"></i>
-                        </button> -->
-                        <br-button type="button" shape="circle" aria-label="Exibir senha">
-                          <i class="fas fa-eye" aria-hidden="true"></i>
-                        </br-button>
                       </div>
                       <div class="d-flex justify-content-between mb-3">
                         <div class="br-checkbox">
@@ -47,7 +41,6 @@
                         </div>
                         <a href="#" class="text-primary">Esqueceu a senha?</a>
                       </div>
-                      <!-- <button class="br-button primary block">Entrar</button> -->
                       <br-button emphasis="primary" shape="block">Entrar</br-button>
                     </div>
                   </div>
@@ -61,41 +54,26 @@
                   <div class="screen-body">
                     <div class="login-form">
                       <div class="br-input mb-3">
-                        <label for="login-email-2">E-mail</label>
-                        <input
+                        <br-input
                           id="login-email-2"
                           type="email"
+                          label="E-mail"
                           placeholder="seu.email@exemplo.com"
                         />
                       </div>
                       <div class="br-input input-button mb-3">
-                        <label for="login-password-2">Senha</label>
-                        <input
+                        <br-input
                           id="login-password-2"
                           type="password"
+                          label="Senha"
                           placeholder="Digite sua senha"
                         />
-                        <!-- <button class="br-button" type="button" aria-label="Exibir senha">
-                          <i class="fas fa-eye" aria-hidden="true"></i>
-                        </button> -->
-                        <br-button type="button" shape="circle" aria-label="Exibir senha">
-                          <i class="fas fa-eye" aria-hidden="true"></i>
-                        </br-button>
                       </div>
                       <button class="br-button primary block mb-3">Entrar</button>
                       <div class="divider">
                         <span>ou entre com</span>
                       </div>
                       <div class="social-login">
-                        <!-- <button class="br-button circle" aria-label="Entrar com Google">
-                          <i class="fab fa-google" aria-hidden="true"></i>
-                        </button>
-                        <button class="br-button circle" aria-label="Entrar com Facebook">
-                          <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                        </button>
-                        <button class="br-button circle" aria-label="Entrar com Twitter">
-                          <i class="fab fa-twitter" aria-hidden="true"></i>
-                        </button> -->
                         <br-button shape="circle" aria-label="Entrar com Google">
                           <i class="fab fa-google" aria-hidden="true"></i>
                         </br-button>
@@ -172,12 +150,6 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div class="dashboard-chart">
-                        <div class="chart-placeholder">Gráfico de Vendas</div>
-                      </div>
-                      <div class="dashboard-table">
-                        <div class="table-placeholder">Tabela de Atividades Recentes</div>
-                      </div> -->
                       <div class="dashboard-chart">
                         <canvas id="salesChart"></canvas>
                       </div>
@@ -198,11 +170,17 @@
                       <div class="dashboard-header">
                         <div class="dashboard-title">Análise de Desempenho</div>
                         <div class="dashboard-filter">
-                          <select class="br-select">
-                            <option>Últimos 7 dias</option>
-                            <option>Últimos 30 dias</option>
-                            <option>Últimos 90 dias</option>
-                          </select>
+                          <br-select
+                            density="small"
+                            show-search-icon
+                            label="Label"
+                            placeholder="Selecione uma opção"
+                            options='[
+                              { "label": "Últimos 7 dias", "value": "7", "selected": false },
+                              { "label": "Últimos 30 dias", "value": "30", "selected": false },
+                              { "label": "Últimos 90 dias", "value": "90", "selected": false }
+                            ]'
+                          ></br-select>
                         </div>
                       </div>
                       <div class="dashboard-chart-large">
@@ -254,46 +232,50 @@
                     <div class="form-layout">
                       <div class="form-group">
                         <div class="br-input">
-                          <label for="form-name">Nome Completo</label>
-                          <input
+                          <br-input
                             id="form-name"
                             type="text"
+                            label="Nome Completo"
                             placeholder="Digite seu nome completo"
                           />
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="br-input">
-                          <label for="form-email">E-mail</label>
-                          <input
+                          <br-input
                             id="form-email"
                             type="email"
+                            label="E-mail"
                             placeholder="seu.email@exemplo.com"
                           />
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="br-input">
-                          <label for="form-cpf">CPF</label>
-                          <input id="form-cpf" type="text" placeholder="000.000.000-00" />
+                          <br-input
+                            id="form-cpf"
+                            type="text"
+                            label="CPF"
+                            placeholder="000.000.000-00"
+                          />
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="br-input">
-                          <label for="form-phone">Telefone</label>
-                          <input
+                          <br-input
                             id="form-phone"
                             type="text"
+                            label="Telefone"
                             placeholder="(00) 00000-0000"
                           />
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="br-input">
-                          <label for="form-address">Endereço</label>
-                          <input
+                          <br-input
                             id="form-address"
                             type="text"
+                            label="Endereço"
                             placeholder="Rua, número, complemento"
                           />
                         </div>
@@ -301,26 +283,40 @@
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <div class="br-input">
-                            <label for="form-city">Cidade</label>
-                            <input id="form-city" type="text" placeholder="Sua cidade" />
+                            <br-input
+                              id="form-city"
+                              type="text"
+                              label="Cidade"
+                              placeholder="Sua cidade"
+                            />
                           </div>
                         </div>
                         <div class="form-group col-md-6">
                           <div class="br-input">
-                            <label for="form-state">Estado</label>
-                            <select id="form-state" class="br-select">
-                              <option value="">Selecione</option>
-                              <option value="SP">São Paulo</option>
-                              <option value="RJ">Rio de Janeiro</option>
-                              <option value="MG">Minas Gerais</option>
-                            </select>
+                            <br-select
+                              id="form-state"
+                              density="small"
+                              show-search-icon
+                              label="Estado"
+                              placeholder="Selecione uma opção"
+                              options='[
+                                { "label": "Selecione", "value": "" },
+                                { "label": "São Paulo", "value": "SP" },
+                                { "label": "Rio de Janeiro", "value": "RJ" },
+                                { "label": "Minas Gerais", "value": "MG" }
+                              ]'
+                            ></br-select>
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="br-input">
-                          <label for="form-zip">CEP</label>
-                          <input id="form-zip" type="text" placeholder="00000-000" />
+                          <br-input
+                            id="form-zip"
+                            type="text"
+                            label="CEP"
+                            placeholder="00000-000"
+                          />
                         </div>
                       </div>
                       <div class="form-actions">
@@ -340,46 +336,102 @@
                     <div class="form-layout">
                       <div class="form-group">
                         <div class="br-input">
-                          <label for="search-query">Termo de Pesquisa</label>
-                          <input
+                          <br-input
                             id="search-query"
                             type="text"
+                            label="Termo de Pesquisa"
                             placeholder="Digite o que você procura"
                           />
                         </div>
                       </div>
+
                       <div class="form-group">
-                        <label>Categorias</label>
-                        <div class="br-checkbox">
-                          <input id="cat-1" type="checkbox" />
-                          <label for="cat-1">Eletrônicos</label>
-                        </div>
-                        <div class="br-checkbox">
-                          <input id="cat-2" type="checkbox" />
-                          <label for="cat-2">Roupas</label>
-                        </div>
-                        <div class="br-checkbox">
-                          <input id="cat-3" type="checkbox" />
-                          <label for="cat-3">Livros</label>
-                        </div>
-                        <div class="br-checkbox">
-                          <input id="cat-4" type="checkbox" />
-                          <label for="cat-4">Esportes</label>
+                        <label class="form-label d-block mb-2">Categorias</label>
+                        <div class="d-flex flex-column gap-2">
+                          <br-checkbox
+                            class="mb-1"
+                            id="cat-1"
+                            name="categorias"
+                            label="Eletrônicos"
+                          />
+                          <br-checkbox
+                            class="mb-1"
+                            id="cat-2"
+                            name="categorias"
+                            label="Roupas"
+                          />
+                          <br-checkbox
+                            class="mb-1"
+                            id="cat-3"
+                            name="categorias"
+                            label="Livros"
+                          />
+                          <br-checkbox
+                            class="mb-1"
+                            id="cat-4"
+                            name="categorias"
+                            label="Esportes"
+                          />
                         </div>
                       </div>
+
                       <div class="form-group">
                         <label>Faixa de Preço</label>
                         <div class="price-range">
                           <div class="br-input">
-                            <input id="price-min" type="number" placeholder="Mín" />
+                            <br-input
+                              id="price-min"
+                              type="number"
+                              label="Mín"
+                              placeholder="Mín"
+                            />
                           </div>
                           <span>até</span>
                           <div class="br-input">
-                            <input id="price-max" type="number" placeholder="Máx" />
+                            <br-input
+                              id="price-max"
+                              type="number"
+                              label="Máx"
+                              placeholder="Máx"
+                            />
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
+                        <label class="form-label d-block mb-2">Ordenar por</label>
+                        <div class="d-flex flex-column gap-2">
+                          <br-radio
+                            class="mb-1"
+                            id="sort-1"
+                            name="sort"
+                            value="relevancia"
+                            label="Relevância"
+                          />
+                          <br-radio
+                            class="mb-1"
+                            id="sort-2"
+                            name="sort"
+                            value="menor-maior"
+                            label="Preço: Menor para Maior"
+                          />
+                          <br-radio
+                            class="mb-1"
+                            id="sort-3"
+                            name="sort"
+                            value="maior-menor"
+                            label="Preço: Maior para Menor"
+                          />
+                          <br-radio
+                            class="mb-1"
+                            id="sort-4"
+                            name="sort"
+                            value="avaliacoes"
+                            label="Avaliações"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- <div class="form-group">
                         <label>Ordenar por</label>
                         <div class="br-radio">
                           <input id="sort-1" type="radio" name="sort" />
@@ -397,7 +449,7 @@
                           <input id="sort-4" type="radio" name="sort" />
                           <label for="sort-4">Avaliações</label>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="form-actions">
                         <button class="br-button secondary">Limpar</button>
                         <button class="br-button primary">Pesquisar</button>

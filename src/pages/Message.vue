@@ -28,10 +28,7 @@
           placeholder="Digite sua mensagem"
           density="medium"
         ></br-textarea>
-        <div class="d-flex mt-3">
-          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
-          <br-button emphasis="primary" type="submit" class="mr-2">Enviar</br-button>
-        </div>
+        <br-button emphasis="primary" type="submit" class="mt-3">Enviar</br-button>
       </div>
     </div>
 
@@ -49,21 +46,13 @@
           placeholder="Ex: 2022"
           density="medium"
         ></br-input>
-        <br-select
-          show-search-icon
-          label="Combustível"
-          placeholder="Selecione o tipo"
-          options='[
-            { "label": "Gasolina", "value": "gasolina", "selected": false },
-            { "label": "Etanol", "value": "etanol", "selected": false },
-            { "label": "Diesel", "value": "diesel", "selected": false },
-            { "label": "Elétrico", "value": "eletrico", "selected": false }
-          ]'
-        ></br-select>
-        <div class="d-flex mt-3">
-          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
-          <br-button emphasis="primary" type="submit" class="mr-2">Salvar</br-button>
-        </div>
+        <br-select label="Combustível">
+          <option>Gasolina</option>
+          <option>Etanol</option>
+          <option>Diesel</option>
+          <option>Elétrico</option>
+        </br-select>
+        <br-button emphasis="primary" type="submit" class="mt-3">Salvar</br-button>
       </div>
     </div>
 
@@ -76,12 +65,9 @@
         <br-switch checked label="Notificações por Email"></br-switch>
         <br-switch label="Notificações por SMS"></br-switch>
         <br-switch label="Notificações Push"></br-switch>
-        <div class="d-flex mt-3">
-          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
-          <br-button emphasis="primary" type="submit" class="mr-2"
-            >Atualizar Preferências</br-button
-          >
-        </div>
+        <br-button emphasis="secondary" type="submit" class="mt-3"
+          >Atualizar Preferências</br-button
+        >
       </div>
     </div>
 
@@ -95,12 +81,9 @@
         <br-checkbox label="Educação"></br-checkbox>
         <br-checkbox label="Esportes"></br-checkbox>
         <br-checkbox label="Viagens"></br-checkbox>
-        <div class="d-flex mt-3">
-          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
-          <br-button emphasis="primary" type="submit" class="mr-2"
-            >Salvar Interesses</br-button
-          >
-        </div>
+        <br-button emphasis="secondary" type="submit" class="mt-3"
+          >Salvar Interesses</br-button
+        >
       </div>
     </div>
 
@@ -118,12 +101,9 @@
           message="Apenas arquivos PDF são aceitos."
           show-icon
         ></br-message>
-        <div class="d-flex mt-3">
-          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
-          <br-button emphasis="primary" type="submit" class="mr-2"
-            >Enviar Currículo</br-button
-          >
-        </div>
+        <br-button emphasis="tertiary" type="submit" class="mt-3"
+          >Enviar Currículo</br-button
+        >
       </div>
     </div>
   </div>
@@ -162,8 +142,5 @@
 }
 .mb-4 {
   margin-bottom: 1.5rem;
-}
-.mr-2 {
-  margin-right: 0.75rem;
 }
 </style>

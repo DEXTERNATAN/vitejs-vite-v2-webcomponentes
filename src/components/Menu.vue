@@ -1,68 +1,68 @@
 <template>
-  <nav class="menu-body" role="tree">
-    <!-- Renderizando dinamicamente cada seção (folder) -->
+  <div class="menu-body" role="tree">
+    <!-- Renderizando dinamicamente cada seção (folder ou item simples) -->
     <div v-for="folder in menuItems" :key="folder.id" class="menu-folder">
-      <!-- Cabeçalho da pasta: ao clicar, alterna a exibição dos itens -->
-      <a
-        href="#"
-        class="menu-item"
-        role="treeitem"
-        :aria-expanded="folder.expanded.toString()"
-        @click.prevent="toggleFolder(folder.id)"
-      >
+      <!-- Item sem submenu -->
+      <a v-if="!folder.children || folder.children.length === 0" href="#" class="menu-item" role="treeitem" tabindex="0"
+        aria-level="1" :aria-current="itemAtivo === folder.id ? 'true' : null"
+        :class="{ active: itemAtivo === folder.id }" @click.prevent="navigate(folder.url, folder.id)"
+        @keydown.enter.space.prevent="navigate(folder.url, folder.id)">
         <span class="icon">
           <i :class="folder.icon" aria-hidden="true"></i>
         </span>
         <span class="content">{{ folder.name }}</span>
       </a>
-      <!-- Lista dos itens dessa pasta (exibida quando expanded é true) -->
-      <ul v-show="folder.expanded" class="list-hide" role="group">
-        <li v-for="child in folder.children" :key="child.id">
-          <a
-            href="#"
-            class="menu-item"
-            role="treeitem"
-            :class="{ active: itemAtivo === child.id }"
-            @click.prevent="navigate(child.url, child.id)"
-          >
-            <span class="icon">
-              <i :class="child.icon" aria-hidden="true"></i>
-            </span>
-            <span class="content">{{ child.name }}</span>
-          </a>
-          <!-- Caso o item possua subitens, renderiza uma lista interna -->
-          <ul v-if="child.children" role="group">
-            <li v-for="sub in child.children" :key="sub.id">
-              <a
-                class="menu-item"
-                href="#"
-                role="treeitem"
-                @click="navigate(sub.url, sub.id)"
-              >
-                <span class="icon">
-                  <i :class="sub.icon" aria-hidden="true"></i>
-                </span>
-                <span class="content">{{ sub.name }}</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+
+      <!-- Item com submenu (pasta) -->
+      <template v-else>
+        <a href="#" class="menu-item" role="treeitem" tabindex="0" :aria-expanded="folder.expanded.toString()"
+          aria-level="1" @click="toggleFolder(folder.id)" @keydown.enter.space.prevent="toggleFolder(folder.id)">
+          <span class="icon">
+            <i :class="folder.icon" aria-hidden="true"></i>
+          </span>
+          <span class="content">{{ folder.name }}</span>
+        </a>
+
+        <ul v-show="folder.expanded" class="list-hide" role="group" :aria-hidden="!folder.expanded">
+          <li v-for="child in folder.children" :key="child.id">
+            <a href="#" class="menu-item" role="treeitem" tabindex="0" :aria-level="2"
+              :aria-current="itemAtivo === child.id ? 'true' : null" :class="{ active: itemAtivo === child.id }"
+              @click.prevent="navigate(child.url, child.id)"
+              @keydown.enter.space.prevent="navigate(child.url, child.id)">
+              <span class="icon">
+                <i :class="child.icon" aria-hidden="true"></i>
+              </span>
+              <span class="content">{{ child.name }}</span>
+            </a>
+
+            <!-- Subitens -->
+            <ul v-if="child.children" role="group">
+              <li v-for="sub in child.children" :key="sub.id">
+                <a class="menu-item" href="#" role="treeitem" tabindex="0" aria-level="3"
+                  :aria-current="itemAtivo === sub.id ? 'true' : null" :class="{ active: itemAtivo === sub.id }"
+                  @click.prevent="navigate(sub.url, sub.id)" @keydown.enter.space.prevent="navigate(sub.url, sub.id)">
+                  <span class="icon">
+                    <i :class="sub.icon" aria-hidden="true"></i>
+                  </span>
+                  <span class="content">{{ sub.name }}</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </template>
     </div>
 
     <!-- Link complementar fora dos grupos principais -->
-    <a
-      class="menu-item divider"
-      href="#"
-      role="treeitem"
-      @click="navigate(project.url, 'project')"
-    >
+    <a class="menu-item divider" href="#" role="treeitem" tabindex="0" aria-level="1"
+      :aria-current="itemAtivo === 'project' ? 'true' : null" :class="{ active: itemAtivo === 'project' }"
+      @click.prevent="navigate(project.url, 'project')" @keydown.enter.space.prevent="navigate(project.url, 'project')">
       <span class="icon">
         <i :class="project.icon" aria-hidden="true"></i>
       </span>
       <span class="content">{{ project.name }}</span>
     </a>
-  </nav>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -72,13 +72,13 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const itemAtivo = ref<string | null>(null);
 
-/*
-  Estrutura de dados do menu revisada:
-  - O folder "Todos os Componentes" não repete seu próprio título na lista de filhos.
-  - Cada item possui um id único (inclusive subitens) para uso correto das keys.
-  - Itens sem subitens possuem a propriedade "url" para navegação, enquanto itens com subitens usam a propriedade "expanded" para controlar a exibição.
-*/
 const menuItems = ref([
+  {
+    id: "home",
+    name: "Home",
+    icon: "fas fa-home",
+    url: "/",
+  },
   {
     id: "1",
     name: "Componentes",
@@ -244,16 +244,12 @@ const menuItems = ref([
   },
 ]);
 
-// Link complementar para "Sobre este projeto"
 const project = ref({
   name: "Sobre este projeto",
   icon: "fas fa-info-circle",
   url: "/sobre-projeto",
 });
 
-/*
-  Função para alternar o estado (expand/collapse) das seções.
-*/
 function toggleFolder(id: string) {
   const folder = menuItems.value.find((item) => item.id === id);
   if (folder) {
@@ -261,9 +257,6 @@ function toggleFolder(id: string) {
   }
 }
 
-/*
-  Função para navegação usando Vue Router.
-*/
 function navigate(url: string, id: string) {
   itemAtivo.value = id;
   router.push(url);

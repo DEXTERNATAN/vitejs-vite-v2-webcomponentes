@@ -1,5 +1,5 @@
 <template>
-  <div class="button-container">
+  <div class="button-container" role="main">
     <h1>Button</h1>
     <p>
       Componente responsável por acionar ações e interações no sistema. Suporta diferentes
@@ -92,16 +92,20 @@
           <br-button emphasis="primary" density="medium" shape="pill"
             >Formato Pill</br-button
           >
+
+          <!-- Corrigido: botão icônico com aria-label válido -->
           <br-button
             emphasis="secondary"
             density="medium"
             shape="circle"
-            aria-label="Formato Círculo"
+            aria-label="Favoritar"
           >
             <br-icon icon-name="fa6-solid:heart" />
           </br-button>
+
           <br-button emphasis="secondary" density="medium">Formato Padrão</br-button>
         </div>
+
         <p class="card-text mt-3">
           <small
             >O formato <code>block</code> ocupa toda a largura disponível do
@@ -129,6 +133,8 @@
           <br-button emphasis="primary" density="medium" shape="pill" is-loading
             >Carregando (pill)</br-button
           >
+
+          <!-- Corrigido: botão icônico com aria-label válido -->
           <br-button
             emphasis="secondary"
             density="medium"
@@ -139,17 +145,20 @@
           >
             <br-icon icon-name="fa6-solid:star" />
           </br-button>
+
           <br-button
             emphasis="tertiary"
             density="large"
             shape="block"
             is-loading
             color-mode="dark"
-            >Carregando Block Dark</br-button
           >
-          <br-button emphasis="primary" density="small" disabled shape="block"
-            >Desabilitado Block</br-button
-          >
+            Carregando Block Dark
+          </br-button>
+
+          <br-button emphasis="primary" density="small" disabled shape="block">
+            Desabilitado Block
+          </br-button>
         </div>
       </div>
     </div>
