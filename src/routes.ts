@@ -2,20 +2,12 @@
 // import Formulario from './pages/Formulario.vue';
 // import Signin from './pages/Signin.vue';
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "./pages/Home.vue";
-import SobreProjeto from "./pages/SobreProjeto.vue";
-import Graficos from "./pages/Graficos.vue";
-import Telas from "./pages/Telas.vue";
-import FormulariosValidacao from "./pages/FormulariosValidacao.vue";
-import Avatar from "./pages/Avatar.vue";
-import Button from "./pages/Button.vue";
-import Input from "./pages/Input.vue";
 
 const routes = [
   {
     path: "/",
-    component: Home,
     name: "Home",
+    component: () => import("./pages/Home.vue"),
     meta: {
       label: "Página Inicial",
       title: "Página Inicial - Meu Sistema",
@@ -23,8 +15,8 @@ const routes = [
   },
   {
     path: "/graficos",
-    component: Graficos,
     name: "Graficos",
+    component: () => import("./pages/Graficos.vue"),
     meta: {
       label: "Gráficos",
       title: "Gráficos - Dashboard",
@@ -32,17 +24,17 @@ const routes = [
   },
   {
     path: "/telas",
-    component: Telas,
     name: "Telas",
+    component: () => import("./pages/Telas.vue"),
     meta: {
       label: "Telas",
       title: "Telas - Dashboard",
     },
   },
   {
-    path: "/sobre-projeto",
-    component: SobreProjeto,
-    name: "Sobre Projeto",
+    path: "/sobre",
+    name: "SobreProjeto",
+    component: () => import("./pages/SobreProjeto.vue"),
     meta: {
       label: "Sobre o Projeto",
       title: "Sobre o Projeto - Meu Sistema",
@@ -50,8 +42,8 @@ const routes = [
   },
   {
     path: "/formularios-validacao",
-    component: FormulariosValidacao,
-    name: "Formulários de Validação",
+    name: "FormulariosValidacao",
+    component: () => import("./pages/FormulariosValidacao.vue"),
     meta: {
       label: "Formulários de Validação",
       title: "Formulários de Validação - Componentes",
@@ -59,8 +51,8 @@ const routes = [
   },
   {
     path: "/avatar",
-    component: Avatar,
     name: "Avatar",
+    component: () => import("./pages/Avatar.vue"),
     meta: {
       label: "Avatar",
       title: "Avatar - Componentes",
@@ -68,8 +60,8 @@ const routes = [
   },
   {
     path: "/button",
-    component: Button,
     name: "Button",
+    component: () => import("./pages/Button.vue"),
     meta: {
       label: "Button",
       title: "Button - Componentes",
@@ -77,157 +69,173 @@ const routes = [
   },
   {
     path: "/input",
-    component: Input,
     name: "Input",
+    component: () => import("./pages/Input.vue"),
     meta: {
       label: "Input",
       title: "Input - Componentes",
     },
   },
   {
-    path: '/select',
-    name: 'Select',
-    component: () => import('./pages/Select.vue')
-  },
-  {
-    path: '/checkbox',
-    name: 'Checkbox',
-    component: () => import('./pages/Checkbox.vue')
-  },
-  {
-    path: '/radio',
-    name: 'Radio',
-    component: () => import('./pages/Radio.vue')
-  },
-  {
-    path: '/message',
-    name: 'Message',
-    component: () => import('./pages/Message.vue')
-  },
-  {
-    path: '/breadcrumb',
-    name: 'Breadcrumb',
-    component: () => import('./pages/Breadcrumb.vue'),
+    path: "/select",
+    name: "Select",
+    component: () => import("./pages/Select.vue"),
     meta: {
-      label: 'Breadcrumb',
-      title: 'Breadcrumb - Componentes',
+      label: "Select",
+      title: "Select - Componentes",
     },
   },
   {
-    path: '/checkgroup',
-    name: 'Checkgroup',
-    component: () => import('./pages/Checkgroup.vue'),
+    path: "/checkbox",
+    name: "Checkbox",
+    component: () => import("./pages/Checkbox.vue"),
     meta: {
-      label: 'Checkgroup',
-      title: 'Checkgroup - Componentes',
+      label: "Checkbox",
+      title: "Checkbox - Componentes",
     },
   },
   {
-    path: '/collapse',
-    name: 'Collapse',
-    component: () => import('./pages/Collapse.vue'),
+    path: "/radio",
+    name: "Radio",
+    component: () => import("./pages/Radio.vue"),
     meta: {
-      label: 'Collapse',
-      title: 'Collapse - Componentes',
+      label: "Radio",
+      title: "Radio - Componentes",
     },
   },
   {
-    path: '/divider',
-    name: 'Divider',
-    component: () => import('./pages/Divider.vue'),
+    path: "/message",
+    name: "Message",
+    component: () => import("./pages/Message.vue"),
     meta: {
-      label: 'Divider',
-      title: 'Divider - Componentes',
+      label: "Message",
+      title: "Message - Componentes",
     },
   },
   {
-    path: '/dropdown',
-    name: 'Dropdown',
-    component: () => import('./pages/Dropdown.vue'),
+    path: "/breadcrumb",
+    name: "Breadcrumb",
+    component: () => import("./pages/Breadcrumb.vue"),
     meta: {
-      label: 'Dropdown',
-      title: 'Dropdown - Componentes',
+      label: "Breadcrumb",
+      title: "Breadcrumb - Componentes",
     },
   },
   {
-    path: '/icon',
-    name: 'Icon',
-    component: () => import('./pages/Icon.vue'),
+    path: "/checkgroup",
+    name: "Checkgroup",
+    component: () => import("./pages/Checkgroup.vue"),
     meta: {
-      label: 'Icon',
-      title: 'Icon - Componentes',
+      label: "Checkgroup",
+      title: "Checkgroup - Componentes",
     },
   },
   {
-    path: '/item',
-    name: 'Item',
-    component: () => import('./pages/Item.vue'),
+    path: "/collapse",
+    name: "Collapse",
+    component: () => import("./pages/Collapse.vue"),
     meta: {
-      label: 'Item',
-      title: 'Item - Componentes',
+      label: "Collapse",
+      title: "Collapse - Componentes",
     },
   },
   {
-    path: '/list',
-    name: 'List',
-    component: () => import('./pages/List.vue'),
+    path: "/divider",
+    name: "Divider",
+    component: () => import("./pages/Divider.vue"),
     meta: {
-      label: 'List',
-      title: 'List - Componentes',
+      label: "Divider",
+      title: "Divider - Componentes",
     },
   },
   {
-    path: '/loading',
-    name: 'Loading',
-    component: () => import('./pages/Loading.vue'),
+    path: "/dropdown",
+    name: "Dropdown",
+    component: () => import("./pages/Dropdown.vue"),
     meta: {
-      label: 'Loading',
-      title: 'Loading - Componentes',
+      label: "Dropdown",
+      title: "Dropdown - Componentes",
     },
   },
   {
-    path: '/switch',
-    name: 'Switch',
-    component: () => import('./pages/Switch.vue'),
+    path: "/icon",
+    name: "Icon",
+    component: () => import("./pages/Icon.vue"),
     meta: {
-      label: 'Switch',
-      title: 'Switch - Componentes',
+      label: "Icon",
+      title: "Icon - Componentes",
     },
   },
   {
-    path: '/tag',
-    name: 'Tag',
-    component: () => import('./pages/Tag.vue'),
+    path: "/item",
+    name: "Item",
+    component: () => import("./pages/Item.vue"),
     meta: {
-      label: 'Tag',
-      title: 'Tag - Componentes',
+      label: "Item",
+      title: "Item - Componentes",
     },
   },
   {
-    path: '/textarea',
-    name: 'TextArea',
-    component: () => import('./pages/TextArea.vue'),
+    path: "/list",
+    name: "List",
+    component: () => import("./pages/List.vue"),
     meta: {
-      label: 'TextArea',
-      title: 'TextArea - Componentes',
+      label: "List",
+      title: "List - Componentes",
     },
   },
   {
-    path: '/upload',
-    name: 'Upload',
-    component: () => import('./pages/Upload.vue'),
+    path: "/loading",
+    name: "Loading",
+    component: () => import("./pages/Loading.vue"),
     meta: {
-      label: 'Upload',
-      title: 'Upload - Componentes',
+      label: "Loading",
+      title: "Loading - Componentes",
     },
   },
   {
-    path: '/formularios',
-    name: 'Formulario',
-    component: () => import('./pages/Formulario.vue'),
+    path: "/switch",
+    name: "Switch",
+    component: () => import("./pages/Switch.vue"),
     meta: {
-      label: 'Formulario',
-      title: 'Formulario - Componentes',
+      label: "Switch",
+      title: "Switch - Componentes",
+    },
+  },
+  {
+    path: "/tag",
+    name: "Tag",
+    component: () => import("./pages/Tag.vue"),
+    meta: {
+      label: "Tag",
+      title: "Tag - Componentes",
+    },
+  },
+  {
+    path: "/textarea",
+    name: "TextArea",
+    component: () => import("./pages/TextArea.vue"),
+    meta: {
+      label: "TextArea",
+      title: "TextArea - Componentes",
+    },
+  },
+  {
+    path: "/upload",
+    name: "Upload",
+    component: () => import("./pages/Upload.vue"),
+    meta: {
+      label: "Upload",
+      title: "Upload - Componentes",
+    },
+  },
+  {
+    path: "/formularios",
+    name: "Formulario",
+    component: () => import("./pages/Formulario.vue"),
+    meta: {
+      label: "Formulário",
+      title: "Formulário - Componentes",
     },
   },
 ];
