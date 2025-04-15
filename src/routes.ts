@@ -41,6 +41,15 @@ const routes = [
     },
   },
   {
+    path: "/cores",
+    name: "Cores",
+    component: () => import("./pages/Cores.vue"),
+    meta: {
+      label: "Cores",
+      title: "Cores - Design System",
+    },
+  },
+  {
     path: "/formularios-validacao",
     name: "FormulariosValidacao",
     component: () => import("./pages/FormulariosValidacao.vue"),
