@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar-container">
+  <div class="avatar-container" role="main">
     <h1>Avatar</h1>
     <p>
       Esta página apresenta variações e usos do componente <code>&lt;br-avatar&gt;</code>,
@@ -10,14 +10,13 @@
     <!-- Aviso sobre erro conhecido -->
     <br-message
       state="danger"
-      message="Erro na dimensão do ícone quando utilizado com botão do tipo circle."
-      is-feedback
+      message="Erro na dimensão do ícone quando utilizado com botão do tipo circle. Com propriedades width e height."
       show-icon
       class="mb-4"
     />
 
     <!-- Tipos principais -->
-    <div class="br-card screen-preview mb-4">
+    <section aria-labelledby="tipo-avatar" class="br-card screen-preview mb-4">
       <div class="screen-header">
         <div class="screen-title">1. Tipos Principais (Densidade Média)</div>
       </div>
@@ -26,12 +25,13 @@
           Demonstração dos tipos <code>src</code>, <code>isIconic</code> e
           <code>text</code>.
         </p>
-        <div class="avatar-group">
+        <div class="avatar-group" role="group" aria-label="Avatares principais">
           <br-avatar
             src="https://picsum.photos/id/1062/80"
             density="medium"
             alt="Foto de perfil (mulher com câmera)"
             title="Tipo: src (Imagem)"
+            aria-label="Avatar tipo imagem"
           />
           <br-avatar
             is-iconic
@@ -47,7 +47,7 @@
           />
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Densidades -->
     <div class="br-card screen-preview mb-4">
@@ -133,9 +133,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-// Nenhum script necessário por enquanto
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .avatar-container {

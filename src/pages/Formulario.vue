@@ -1,368 +1,310 @@
 <template>
-  <Message
-    message="Formulário enviado com sucesso!"
-    type="success"
-    v-if="isSubmited"
-  />
-  <h1>Usuários</h1>
-  <h2>Cadastrar Usuário</h2>
-  <form @submit.prevent="submitForm">
-    <div class="mb-3">
-      <br-input
-        type="text"
-        id="name"
-        placeholder="Nome"
-        label="Nome:"
-        name="name"
-        v-model-form="name"
-        @blur="checkName"
-        :state="errors.name ? 'danger' : null"
-      ></br-input>
-      <Message
-        :message="errors.name"
-        v-if="errors.name"
-        feedback
-        type="danger"
-      />
-    </div>
+  <div class="formulario-container" role="main">
+    <h1>Exemplos de Formulários</h1>
+    <p>
+      Esta página apresenta diferentes exemplos de uso de formulários utilizando os
+      componentes da biblioteca.
+    </p>
 
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <br-input
-            type="email"
-            id="email"
-            placeholder="E-mail"
-            label="E-mail:"
-            name="email"
-            v-model-form="email"
-            @blur="checkEmail"
-            :state="errors.email ? 'danger' : null"
-          ></br-input>
-          <Message
-            :message="errors.email"
-            v-if="errors.email"
-            feedback
-            type="danger"
-          />
-        </div>
-        <div class="col">
-          <br-input
-            type="text"
-            id="mobile"
-            placeholder="Ex.: (99) 99999-9999"
-            label="Telefone Celular:"
-            name="mobile"
-            v-model-form="mobile"
-            mask="(##) #####-####"
-            @blur="checkMobile"
-            :state="errors.mobile ? 'danger' : null"
-          ></br-input>
-          <Message
-            :message="errors.mobile"
-            v-if="errors.mobile"
-            feedback
-            type="danger"
-          />
+    <!-- 1. Formulário de Contato -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">1. Formulário de Contato</div>
+      </div>
+      <div class="card-content p-4">
+        <br-input
+          label="Nome"
+          placeholder="Digite seu nome completo"
+          density="medium"
+        ></br-input>
+        <br-input
+          label="Email"
+          type="email"
+          placeholder="Digite seu email"
+          density="medium"
+        ></br-input>
+        <br-textarea
+          label="Mensagem"
+          placeholder="Digite sua mensagem"
+          density="medium"
+        ></br-textarea>
+        <div class="d-flex mt-3">
+          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
+          <br-button emphasis="primary" type="submit" class="mr-2">Enviar</br-button>
         </div>
       </div>
     </div>
 
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <br-input
-            type="password"
-            id="password"
-            placeholder="Senha"
-            label="Senha:"
-            name="password"
-            ispassword
-            v-model-form="password"
-            @blur="checkPassword"
-            :state="errors.password ? 'danger' : null"
-          ></br-input>
-          <Message
-            :message="errors.password"
-            v-if="errors.password"
-            feedback
-            type="danger"
-          />
-        </div>
-        <div class="col">
-          <br-input
-            id="rg"
-            placeholder="RG"
-            label="RG:"
-            name="rg"
-            v-model-form="rg"
-            @blur="checkRG"
-            :state="errors.rg ? 'danger' : null"
-          ></br-input>
-          <Message
-            :message="errors.rg"
-            v-if="errors.rg"
-            feedback
-            type="danger"
-          />
+    <!-- 2. Cadastro de Veículo -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">2. Cadastro de Veículo</div>
+      </div>
+      <div class="card-content p-4">
+        <br-input label="Marca" placeholder="Ex: Toyota" density="medium"></br-input>
+        <br-input label="Modelo" placeholder="Ex: Corolla" density="medium"></br-input>
+        <br-input
+          label="Ano"
+          type="number"
+          placeholder="Ex: 2022"
+          density="medium"
+        ></br-input>
+        <br-select
+          show-search-icon
+          label="Combustível"
+          placeholder="Selecione o tipo"
+          options='[
+            { "label": "Gasolina", "value": "gasolina", "selected": false },
+            { "label": "Etanol", "value": "etanol", "selected": false },
+            { "label": "Diesel", "value": "diesel", "selected": false },
+            { "label": "Elétrico", "value": "eletrico", "selected": false }
+          ]'
+        ></br-select>
+        <div class="d-flex mt-3">
+          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
+          <br-button emphasis="primary" type="submit" class="mr-2">Salvar</br-button>
         </div>
       </div>
     </div>
 
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <br-input
-            type="text"
-            id="cpf"
-            placeholder="Ex.: 999.999.999-99"
-            label="CPF:"
-            name="cpf"
-            v-model-form="cpf"
-            mask="###.###.###-##"
-            @blur="checkCPF"
-            :state="errors.cpf ? 'danger' : null"
-          ></br-input>
-          <Message
-            :message="errors.cpf"
-            v-if="errors.cpf"
-            feedback
-            type="danger"
-          />
-        </div>
-        <div class="col">
-          <br-input
-            type="text"
-            id="birthDate"
-            placeholder="Ex.: DD/MM/AAAA"
-            label="Data de nascimento:"
-            name="birthDate"
-            v-model-form="birthDate"
-            @blur="checkBirthDate"
-            mask="##/##/####"
-            :state="errors.birthDate ? 'danger' : null"
-          ></br-input>
-          <Message
-            :message="errors.birthDate"
-            v-if="errors.birthDate"
-            feedback
-            type="danger"
-          />
+    <!-- 3. Preferências de Notificação -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">3. Preferências de Notificação</div>
+      </div>
+      <div class="card-content p-4">
+        <br-switch checked label="Notificações por Email"></br-switch>
+        <br-switch label="Notificações por SMS"></br-switch>
+        <br-switch label="Notificações Push"></br-switch>
+        <div class="d-flex mt-3">
+          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
+          <br-button emphasis="primary" type="submit" class="mr-2"
+            >Atualizar Preferências</br-button
+          >
         </div>
       </div>
     </div>
 
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <br-input
-            type="text"
-            id="address"
-            placeholder="Endereço"
-            label="Endereço: (Opcional)"
-            name="address"
-            v-model-form="address"
-            :state="errors.address ? 'danger' : null"
-          ></br-input>
-        </div>
-        <div class="col">
-          <br-input
-            type="text"
-            id="cep"
-            placeholder="Ex.: 99999-999"
-            label="CEP: (Opcional)"
-            name="cep"
-            v-model-form="cep"
-            mask="#####-###"
-            :state="errors.cep ? 'danger' : null"
-          ></br-input>
+    <!-- 4. Seleção de Interesses -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">4. Seleção de Interesses</div>
+      </div>
+      <div class="card-content p-4">
+        <br-checkbox label="Tecnologia" checked></br-checkbox>
+        <br-checkbox label="Educação"></br-checkbox>
+        <br-checkbox label="Esportes"></br-checkbox>
+        <br-checkbox label="Viagens"></br-checkbox>
+        <div class="d-flex mt-3">
+          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
+          <br-button emphasis="primary" type="submit" class="mr-2"
+            >Salvar Interesses</br-button
+          >
         </div>
       </div>
     </div>
 
-    <div class="mt-3 d-flex justify-content-md-end">
-      <br-button
-        id="enviar"
-        label="Enviar Formulário"
-        type="primary"
-        class="mt-3 mr-1"
-        @click="submitForm()"
-      ></br-button>
+    <!-- 5. Upload de Currículo -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">5. Upload de Currículo</div>
+      </div>
+      <div class="card-content p-4">
+        <br-upload label="Envie seu currículo" accept="application/pdf"></br-upload>
+        <br-message
+          class="mt-2"
+          state="warning"
+          is-feedback
+          message="Apenas arquivos PDF são aceitos."
+          show-icon
+        ></br-message>
+        <div class="d-flex mt-3">
+          <br-button emphasis="secondary" type="reset" class="mr-2">Limpar</br-button>
+          <br-button emphasis="primary" type="submit" class="mr-2"
+            >Enviar Currículo</br-button
+          >
+        </div>
+      </div>
     </div>
-  </form>
-  <div v-if="submittedUsers.length > 0">
-    <h2>Usuários Cadastrados</h2>
-    <br-list title="Usuário" id="submited-users" data-toggle="true">
-      <br-item
-        v-for="(user, index) in submittedUsers"
-        :key="user.cpf"
-        :title="user.name"
-        :hover="true"
-      >
-        <br-list>
-          <br-item :hover="true">
-            <div class="row align-items-center">
-              <div class="col-11">
-                <p>E-mail: {{ user.email }}</p>
-                <p>Telefone Celular: {{ user.mobile }}</p>
-                <p>Senha: ************</p>
-                <p>RG: {{ user.rg }}</p>
-                <p>CPF: {{ user.cpf }}</p>
-                <p>Data de Nascimento: {{ user.birthDate }}</p>
-                <p v-if="user.address">Endereço: {{ user.address }}</p>
-                <p v-if="user.cep">CEP: {{ user.cep }}</p>
-              </div>
-              <div class="col">
-                <br-button
-                  circle="true"
-                  icon="trash"
-                  type="primary"
-                  @click="removeUser(user.cpf)"
-                  aria-labelledby="Remover Usuário"
-                ></br-button>
-              </div>
-            </div>
-          </br-item>
-        </br-list>
-      </br-item>
-    </br-list>
+
+    <!-- 6. Cadastro de Usuário -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">6. Cadastro de Usuário</div>
+      </div>
+      <div class="card-content p-4">
+        <!-- Formulário -->
+        <br-input
+          v-model="user.name"
+          label="Nome"
+          placeholder="Digite seu nome completo"
+          density="medium"
+        ></br-input>
+
+        <br-input
+          v-model="user.email"
+          type="email"
+          label="Email"
+          placeholder="Digite seu email"
+          density="medium"
+        ></br-input>
+
+        <br-input
+          v-model="user.password"
+          type="password"
+          label="Senha"
+          placeholder="Digite uma senha"
+          density="medium"
+        ></br-input>
+
+        <br-input
+          v-model="user.confirmPassword"
+          type="password"
+          label="Confirmar Senha"
+          placeholder="Repita a senha"
+          density="medium"
+        ></br-input>
+
+        <div class="d-flex mt-3">
+          <br-button emphasis="secondary" type="reset" class="mr-2" @click="resetForm">
+            Limpar
+          </br-button>
+          <br-button emphasis="primary" type="button" @click="submitForm">
+            Cadastrar
+          </br-button>
+        </div>
+
+        <!-- Mensagem de sucesso + Tabela de cadastros -->
+        <div v-if="submissions.length" class="mt-4">
+          <br-message
+            state="success"
+            message="Usuário cadastrado com sucesso!"
+            show-icon
+            class="mb-2"
+          />
+
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="p-2 border">Nome</th>
+                <th class="p-2 border">Email</th>
+                <th class="p-2 border">Senha Confere?</th>
+                <th class="p-2 border">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(u, index) in submissions" :key="index" class="hover:bg-gray-50">
+                <td class="p-2 border">{{ u.name }}</td>
+                <td class="p-2 border">{{ u.email }}</td>
+                <td class="p-2 border">
+                  {{ u.password === u.confirmPassword ? "OK" : "Não confere" }}
+                </td>
+                <td class="p-2 border">
+                  <br-button
+                    @click="deleteSubmission(index)"
+                    class="p-1"
+                    emphasis="secondary"
+                    density="medium"
+                    shape="circle"
+                    aria-label="Favoritar"
+                  >
+                    <br-icon icon-name="fa6-solid:trash" />
+                  </br-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Campo com v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">7. Campo com v-model</div>
+      </div>
+      <div class="card-content p-4">
+        <!-- input ligado via v-model -->
+        <br-input
+          v-model="simpleField"
+          label="Texto Livre"
+          placeholder="Digite algo..."
+          density="medium"
+        ></br-input>
+
+        <!-- feedback mostrando o valor digitado -->
+        <br-message state="info" show-icon class="mt-4">
+          Você digitou: <strong>{{ simpleField }}</strong>
+        </br-message>
+      </div>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import Message from '../components/Message.vue';
+<script setup lang="ts">
+import { ref } from "vue";
 
-export default {
-  name: 'FormularioPage',
-  components: {
-    Message,
-  },
-  data() {
-    return {
-      name: '',
-      email: '',
-      mobile: '',
-      password: '',
-      rg: '',
-      cpf: '',
-      birthDate: '',
-      address: '',
-      cep: '',
-      errors: {
-        name: '',
-        email: '',
-        mobile: '',
-        password: '',
-        rg: '',
-        cpf: '',
-        birthDate: '',
-        address: '',
-        cep: '',
-      },
-      isSubmited: false,
-      submittedUsers: [] as any[],
-    };
-  },
-  methods: {
-    checkName() {
-      this.errors.name = !this.name ? 'O campo Nome é obrigatório.' : '';
-    },
-    checkEmail() {
-      this.errors.email = !this.email ? 'O campo E-mail é obrigatório.' : '';
-    },
-    checkMobile() {
-      this.errors.mobile = !this.mobile
-        ? 'O campo Telefone é obrigatório.'
-        : '';
-    },
-    checkPassword() {
-      this.errors.password = !this.password
-        ? 'O campo Senha é obrigatório.'
-        : '';
-    },
-    checkRG() {
-      this.errors.rg = !this.rg ? 'O campo RG é obrigatório.' : '';
-    },
-    checkCPF() {
-      this.errors.cpf = !this.cpf ? 'O campo CPF é obrigatório.' : '';
-    },
-    checkBirthDate() {
-      this.errors.birthDate = !this.birthDate
-        ? 'O campo Data de Nascimento é obrigatório.'
-        : '';
-    },
-    checkForm() {
-      this.errors = {
-        name: '',
-        email: '',
-        mobile: '',
-        password: '',
-        rg: '',
-        cpf: '',
-        birthDate: '',
-        address: '',
-        cep: '',
-      };
+// novo estado para o exemplo 7
+const simpleField = ref("");
 
-      if (!this.name) {
-        this.errors.name = 'O campo Nome é obrigatório.';
-      }
-      if (!this.email) {
-        this.errors.email = 'O campo E-mail é obrigatório.';
-      }
+const user = ref({
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+});
 
-      if (!this.mobile) {
-        this.errors.mobile = 'O campo Telefone é obrigatório.';
-      }
+// array de registros
+const submissions = ref<typeof user.value[]>([]);
 
-      if (!this.password) {
-        this.errors.password = 'O campo Senha é obrigatório.';
-      }
+function resetForm() {
+  user.value = { name: "", email: "", password: "", confirmPassword: "" };
+}
 
-      if (!this.rg) {
-        this.errors.rg = 'O campo RG é obrigatório.';
-      }
+function submitForm() {
+  submissions.value.push({ ...user.value });
+  resetForm();
+}
 
-      if (!this.cpf) {
-        this.errors.cpf = 'O campo CPF é obrigatório.';
-      }
-
-      if (!this.birthDate) {
-        this.errors.birthDate = 'O campo Data de Nascimento é obrigatório.';
-      }
-      // Retorna true se não houver mensagens de erro
-      return Object.values(this.errors).every((error) => error === '');
-    },
-    hideMessage() {
-      setTimeout(() => {
-        this.isSubmited = false;
-      }, 10000);
-    },
-    submitForm() {
-      if (this.checkForm()) {
-        const data = {
-          name: this.name,
-          email: this.email,
-          mobile: this.mobile,
-          password: this.password,
-          rg: this.rg,
-          cpf: this.cpf,
-          birthDate: this.birthDate,
-          address: this.address,
-          cep: this.cep,
-        };
-
-        this.submittedUsers.push(data);
-        this.hideMessage();
-        this.isSubmited = true;
-      }
-    },
-    removeUser(cpf: string) {
-      const index = this.submittedUsers.findIndex((user) => user.cpf === cpf);
-      if (index !== -1) {
-        this.submittedUsers.splice(index, 1);
-      }
-    },
-  },
-};
+// remove o registro na posição informada
+function deleteSubmission(index: number) {
+  submissions.value.splice(index, 1);
+}
 </script>
+
+<style scoped>
+.formulario-container {
+  padding: 20px;
+}
+.screen-preview {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+.screen-header {
+  background-color: #1351b4;
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.screen-title {
+  font-size: 1.1rem;
+}
+.card-content {
+  padding: 20px;
+  background-color: white;
+}
+.mt-3 {
+  margin-top: 1rem;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+.mr-2 {
+  margin-right: 0.75rem;
+}
+</style>

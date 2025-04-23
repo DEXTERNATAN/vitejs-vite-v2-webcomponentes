@@ -1,5 +1,5 @@
 <template>
-  <footer class="br-footer pt-3" id="footer">
+  <footer class="br-footer pt-3 pb-5" id="footer">
     <div class="container-fluid">
       <div class="info">
         <div class="text-down-01 text-medium pb-3">
@@ -17,5 +17,5 @@
 </template>
 
 <script setup lang="ts">
-const license: string = 'Texto destinado a exibição de informações relacionadas à';
+const license: string = "Texto destinado a exibição de informações relacionadas à";
 </script>

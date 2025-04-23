@@ -22,23 +22,45 @@
               <form @submit.prevent="validarFormularioCadastro" class="form-validacao">
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    <div class="br-input" :class="{ 'is-invalid': erros.nome }">
-                      <label for="nome">Nome Completo *</label>
-                      <input id="nome" v-model="formulario.nome" type="text" placeholder="Digite seu nome completo"
-                        @blur="validarCampo('nome')" />
-                      <div class="invalid-feedback" v-if="erros.nome">
-                        {{ erros.nome }}
-                      </div>
+                    <div class="br-input">
+                      <br-input
+                        :state="erros.nome ? 'danger' : undefined"
+                        label="Nome Completo *"
+                        id="nome"
+                        v-model="formulario.nome"
+                        type="text"
+                        placeholder="Digite seu nome completo"
+                        @blur="validarCampo('nome')"
+                      />
+                      <br-message
+                        v-if="erros.nome"
+                        state="danger"
+                        is-feedback
+                        :message="erros.nome"
+                        show-icon
+                        :aria-label="erros.nome"
+                      />
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="br-input" :class="{ 'is-invalid': erros.email }">
-                      <label for="email">E-mail *</label>
-                      <input id="email" v-model="formulario.email" type="email" placeholder="seu.email@exemplo.com"
-                        @blur="validarCampo('email')" />
-                      <div class="invalid-feedback" v-if="erros.email">
-                        {{ erros.email }}
-                      </div>
+                      <br-input
+                        :state="erros.termos ? 'danger' : undefined"
+                        label="E-mail *"
+                        id="email"
+                        v-model="formulario.email"
+                        type="email"
+                        placeholder="seu.email@exemplo.com"
+                        @blur="validarCampo('email')"
+                      />
+                      <br-message
+                        v-if="erros.email"
+                        state="danger"
+                        is-feedback
+                        :message="erros.email"
+                        show-icon
+                        :aria-label="erros.email"
+                      ></br-message>
                     </div>
                   </div>
                 </div>
@@ -46,41 +68,105 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <div class="br-input" :class="{ 'is-invalid': erros.cpf }">
-                      <label for="cpf">CPF *</label>
-                      <input id="cpf" v-model="formulario.cpf" type="text" placeholder="000.000.000-00"
-                        @blur="validarCampo('cpf')" />
-                      <div class="invalid-feedback" v-if="erros.cpf">
-                        {{ erros.cpf }}
-                      </div>
+                      <br-input
+                        label="CPF *"
+                        id="cpf"
+                        v-model="formulario.cpf"
+                        type="text"
+                        placeholder="000.000.000-00"
+                        @blur="validarCampo('cpf')"
+                      />
+                      <br-message
+                        v-if="erros.cpf"
+                        state="danger"
+                        is-feedback
+                        :message="erros.cpf"
+                        show-icon
+                        :aria-label="erros.cpf"
+                      ></br-message>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="br-input" :class="{ 'is-invalid': erros.telefone }">
-                      <label for="telefone">Telefone *</label>
-                      <input id="telefone" v-model="formulario.telefone" type="text" placeholder="(00) 00000-0000"
-                        @blur="validarCampo('telefone')" />
-                      <div class="invalid-feedback" v-if="erros.telefone">
-                        {{ erros.telefone }}
-                      </div>
+                      <br-input
+                        label="Telefone *"
+                        id="telefone"
+                        v-model="formulario.telefone"
+                        type="text"
+                        placeholder="(00) 00000-0000"
+                        @blur="validarCampo('telefone')"
+                      />
+                      <br-message
+                        v-if="erros.telefone"
+                        state="danger"
+                        is-feedback
+                        :message="erros.telefone"
+                        show-icon
+                        :aria-label="erros.telefone"
+                      ></br-message>
                     </div>
                   </div>
                 </div>
-
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="br-select" :class="{ 'is-invalid': erros.genero }">
+                      <br-select
+                        id="genero"
+                        label="Gênero *"
+                        placeholder="Selecione uma opção"
+                        v-model="formulario.genero"
+                        :options="[
+                          { label: 'Masculino', value: 'masculino' },
+                          { label: 'Feminino', value: 'feminino' },
+                          { label: 'Outro', value: 'outro' },
+                        ]"
+                        @blur="validarCampo('genero')"
+                        :state="estadoCampo(erros.genero)"
+                      ></br-select>
+                      <br-message
+                        v-if="erros.genero"
+                        state="danger"
+                        is-feedback
+                        :message="erros.genero"
+                        show-icon
+                        :aria-label="erros.genero"
+                      ></br-message>
+                    </div>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <div class="br-input" :class="{ 'is-invalid': erros.senha }">
-                      <label for="senha">Senha *</label>
-                      <div class="input-group">
-                        <input id="senha" v-model="formulario.senha" :type="mostrarSenha ? 'text' : 'password'"
-                          placeholder="Digite sua senha" @blur="validarCampo('senha')" />
-                        <button class="br-button" type="button" @click="mostrarSenha = !mostrarSenha"
-                          aria-label="Exibir senha">
-                          <i :class="mostrarSenha ? 'fas fa-eye-slash' : 'fas fa-eye'" aria-hidden="true"></i>
-                        </button>
-                      </div>
-                      <div class="invalid-feedback" v-if="erros.senha">
-                        {{ erros.senha }}
-                      </div>
+                      <br-input
+                        label="Senha *"
+                        id="senha"
+                        v-model="formulario.senha"
+                        :type="mostrarSenha ? 'text' : 'password'"
+                        placeholder="Digite sua senha"
+                        @blur="validarCampo('senha')"
+                      >
+                        <template>
+                          <button
+                            class="br-button"
+                            type="button"
+                            @click="mostrarSenha = !mostrarSenha"
+                            aria-label="Exibir senha"
+                          >
+                            <i
+                              :class="mostrarSenha ? 'fas fa-eye-slash' : 'fas fa-eye'"
+                              aria-hidden="true"
+                            ></i>
+                          </button>
+                        </template>
+                      </br-input>
+                      <br-message
+                        v-if="erros.senha"
+                        state="danger"
+                        is-feedback
+                        :message="erros.senha"
+                        show-icon
+                        :aria-label="erros.senha"
+                      ></br-message>
                       <div class="form-text" v-if="formulario.senha && !erros.senha">
                         A senha deve ter pelo menos 8 caracteres, incluindo letras,
                         números e caracteres especiais.
@@ -89,39 +175,69 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="br-input" :class="{ 'is-invalid': erros.confirmarSenha }">
-                      <label for="confirmarSenha">Confirmar Senha *</label>
-                      <div class="input-group">
-                        <input id="confirmarSenha" v-model="formulario.confirmarSenha"
-                          :type="mostrarConfirmarSenha ? 'text' : 'password'" placeholder="Confirme sua senha"
-                          @blur="validarCampo('confirmarSenha')" />
-                        <button class="br-button" type="button" @click="mostrarConfirmarSenha = !mostrarConfirmarSenha"
-                          aria-label="Exibir senha">
-                          <i :class="mostrarConfirmarSenha ? 'fas fa-eye-slash' : 'fas fa-eye'
-                            " aria-hidden="true"></i>
-                        </button>
-                      </div>
-                      <div class="invalid-feedback" v-if="erros.confirmarSenha">
-                        {{ erros.confirmarSenha }}
-                      </div>
+                      <br-input
+                        label="Confirmar Senha *"
+                        id="confirmarSenha"
+                        v-model="formulario.confirmarSenha"
+                        :type="mostrarConfirmarSenha ? 'text' : 'password'"
+                        placeholder="Confirme sua senha"
+                        @blur="validarCampo('confirmarSenha')"
+                      >
+                        <template>
+                          <button
+                            class="br-button"
+                            type="button"
+                            @click="mostrarConfirmarSenha = !mostrarConfirmarSenha"
+                            aria-label="Exibir senha"
+                          >
+                            <i
+                              :class="
+                                mostrarConfirmarSenha ? 'fas fa-eye-slash' : 'fas fa-eye'
+                              "
+                              aria-hidden="true"
+                            ></i>
+                          </button>
+                        </template>
+                      </br-input>
+                      <br-message
+                        v-if="erros.confirmarSenha"
+                        state="danger"
+                        is-feedback
+                        :message="erros.confirmarSenha"
+                        show-icon
+                        :aria-label="erros.confirmarSenha"
+                      ></br-message>
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-12 mb-3">
-                    <div class="br-checkbox" :class="{ 'is-invalid': erros.termos }">
-                      <input id="termos" v-model="formulario.termos" type="checkbox" />
-                      <label for="termos">Li e concordo com os termos de uso e política de privacidade
-                        *</label>
-                      <div class="invalid-feedback" v-if="erros.termos">
-                        {{ erros.termos }}
-                      </div>
-                    </div>
+                    <br-checkbox
+                      class="mb-1"
+                      id="termos"
+                      name="termos"
+                      v-model="formulario.termos"
+                      :state="erros.termos ? 'invalid' : undefined"
+                      label="Li e concordo com os termos de uso e política de privacidade *"
+                    />
+                    <br-message
+                      v-if="erros.termos"
+                      state="danger"
+                      is-feedback
+                      :message="erros.termos"
+                      show-icon
+                      :aria-label="erros.termos"
+                    />
                   </div>
                 </div>
 
                 <div class="form-actions">
-                  <button type="button" class="br-button secondary" @click="limparFormulario">
+                  <button
+                    type="button"
+                    class="br-button secondary"
+                    @click="limparFormulario"
+                  >
                     Limpar
                   </button>
                   <button type="submit" class="br-button primary">Cadastrar</button>
@@ -135,36 +251,66 @@
               <form @submit.prevent="validarFormularioPesquisa" class="form-validacao">
                 <div class="row">
                   <div class="col-md-12 mb-3">
-                    <div class="br-input" :class="{ 'is-invalid': errosPesquisa.termo }">
-                      <label for="termoPesquisa">Termo de Pesquisa *</label>
-                      <input id="termoPesquisa" v-model="formularioPesquisa.termo" type="text"
-                        placeholder="Digite o que você procura" @blur="validarCampoPesquisa('termo')" />
-                      <div class="invalid-feedback" v-if="errosPesquisa.termo">
-                        {{ errosPesquisa.termo }}
-                      </div>
-                    </div>
+                    <br-input
+                      :class="{ 'is-invalid': errosPesquisa.termo }"
+                      label="Termo de Pesquisa *"
+                      id="termoPesquisa"
+                      v-model="formularioPesquisa.termo"
+                      type="text"
+                      placeholder="Digite o que você procura"
+                      @blur="validarCampoPesquisa('termo')"
+                    />
+                    <br-message
+                      v-if="errosPesquisa.termo"
+                      state="danger"
+                      is-feedback
+                      :message="errosPesquisa.termo"
+                      show-icon
+                      :aria-label="errosPesquisa.termo"
+                    ></br-message>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label>Categorias *</label>
-                    <div class="br-checkbox" :class="{ 'is-invalid': errosPesquisa.categorias }">
-                      <input id="cat-eletronicos" v-model="formularioPesquisa.categorias" type="checkbox"
-                        value="eletronicos" />
+                    <div
+                      class="br-checkbox"
+                      :class="{ 'is-invalid': errosPesquisa.categorias }"
+                    >
+                      <input
+                        id="cat-eletronicos"
+                        v-model="formularioPesquisa.categorias"
+                        type="checkbox"
+                        value="eletronicos"
+                      />
                       <label for="cat-eletronicos">Eletrônicos</label>
                     </div>
                     <div class="br-checkbox">
-                      <input id="cat-roupas" v-model="formularioPesquisa.categorias" type="checkbox" value="roupas" />
+                      <input
+                        id="cat-roupas"
+                        v-model="formularioPesquisa.categorias"
+                        type="checkbox"
+                        value="roupas"
+                      />
                       <label for="cat-roupas">Roupas</label>
                     </div>
                     <div class="br-checkbox">
-                      <input id="cat-livros" v-model="formularioPesquisa.categorias" type="checkbox" value="livros" />
+                      <input
+                        id="cat-livros"
+                        v-model="formularioPesquisa.categorias"
+                        type="checkbox"
+                        value="livros"
+                      />
                       <label for="cat-livros">Livros</label>
                     </div>
                     <div class="br-checkbox">
-                      <input id="cat-esportes" v-model="formularioPesquisa.categorias" type="checkbox"
-                        value="esportes" />
+                      <input
+                        id="cat-esportes"
+                        v-model="formularioPesquisa.categorias"
+                        type="checkbox"
+                        value="esportes"
+                      />
                       <label for="cat-esportes">Esportes</label>
                     </div>
                     <div class="invalid-feedback" v-if="errosPesquisa.categorias">
@@ -175,21 +321,49 @@
                     <label>Faixa de Preço *</label>
                     <div class="row">
                       <div class="col-6">
-                        <div class="br-input" :class="{ 'is-invalid': errosPesquisa.precoMin }">
-                          <input id="precoMin" v-model="formularioPesquisa.precoMin" type="number" placeholder="Mín"
-                            @blur="validarCampoPesquisa('precoMin')" />
-                          <div class="invalid-feedback" v-if="errosPesquisa.precoMin">
-                            {{ errosPesquisa.precoMin }}
-                          </div>
+                        <div
+                          class="br-input"
+                          :class="{ 'is-invalid': errosPesquisa.precoMin }"
+                        >
+                          <br-input
+                            label="Mínimo"
+                            id="precoMin"
+                            v-model="formularioPesquisa.precoMin"
+                            type="number"
+                            placeholder="Mín"
+                            @blur="validarCampoPesquisa('precoMin')"
+                          />
+                          <br-message
+                            v-if="errosPesquisa.precoMin"
+                            state="danger"
+                            is-feedback
+                            :message="errosPesquisa.precoMin"
+                            show-icon
+                            :aria-label="errosPesquisa.precoMin"
+                          ></br-message>
                         </div>
                       </div>
                       <div class="col-6">
-                        <div class="br-input" :class="{ 'is-invalid': errosPesquisa.precoMax }">
-                          <input id="precoMax" v-model="formularioPesquisa.precoMax" type="number" placeholder="Máx"
-                            @blur="validarCampoPesquisa('precoMax')" />
-                          <div class="invalid-feedback" v-if="errosPesquisa.precoMax">
-                            {{ errosPesquisa.precoMax }}
-                          </div>
+                        <div
+                          class="br-input"
+                          :class="{ 'is-invalid': errosPesquisa.precoMax }"
+                        >
+                          <br-input
+                            label="Máximo"
+                            id="precoMax"
+                            v-model="formularioPesquisa.precoMax"
+                            type="number"
+                            placeholder="Máx"
+                            @blur="validarCampoPesquisa('precoMax')"
+                          />
+                          <br-message
+                            v-if="errosPesquisa.precoMax"
+                            state="danger"
+                            is-feedback
+                            :message="errosPesquisa.precoMax"
+                            show-icon
+                            :aria-label="errosPesquisa.precoMax"
+                          ></br-message>
                         </div>
                       </div>
                     </div>
@@ -197,7 +371,11 @@
                 </div>
 
                 <div class="form-actions">
-                  <button type="button" class="br-button secondary" @click="limparFormularioPesquisa">
+                  <button
+                    type="button"
+                    class="br-button secondary"
+                    @click="limparFormularioPesquisa"
+                  >
                     Limpar
                   </button>
                   <button type="submit" class="br-button primary">Pesquisar</button>
@@ -220,56 +398,132 @@
             <div class="row">
               <div class="col-md-6">
                 <h4 class="mb-3">Mensagens de Erro</h4>
-                <div class="br-message danger mb-3">
-                  <!-- <div class="message-content">
-                    <div class="message-title">Erro de Validação</div>
-                    <div class="message-body">
-                      Este é um exemplo de mensagem de erro para campos inválidos.
-                    </div>
-                  </div> -->
-                  <br-message></br-message>
+
+                <div class="mb-3">
+                  <br-message
+                    state="danger"
+                    message-title="Erro de Validação"
+                    message="Este é um exemplo de mensagem de erro para campos inválidos."
+                    show-icon
+                    aria-label="Erro de validação para campos inválidos"
+                  />
                 </div>
-                <div class="br-message warning mb-3">
-                  <div class="message-content">
-                    <div class="message-title">Aviso</div>
-                    <div class="message-body">
-                      Este é um exemplo de mensagem de aviso para campos que precisam de
-                      atenção.
-                    </div>
-                  </div>
+
+                <div class="mb-3">
+                  <br-message
+                    state="warning"
+                    message-title="Aviso"
+                    message="Este é um exemplo de mensagem de aviso para campos que precisam de atenção."
+                    show-icon
+                    aria-label="Mensagem de aviso para campos que precisam de atenção"
+                  />
                 </div>
-                <div class="br-message info">
-                  <div class="message-content">
-                    <div class="message-title">Informação</div>
-                    <div class="message-body">
-                      Este é um exemplo de mensagem informativa para orientar o usuário.
-                    </div>
-                  </div>
+
+                <div class="mb-3">
+                  <br-message
+                    state="info"
+                    message-title="Informação"
+                    message="Este é um exemplo de mensagem informativa para orientar o usuário."
+                    show-icon
+                    aria-label="Mensagem informativa para orientar o usuário"
+                  />
                 </div>
               </div>
+
               <div class="col-md-6">
                 <h4 class="mb-3">Estados de Validação</h4>
-                <div class="validation-states">
-                  <div class="br-input mb-3">
-                    <label for="input-normal">Campo Normal</label>
-                    <input id="input-normal" type="text" placeholder="Campo sem validação" />
-                  </div>
-                  <div class="br-input is-invalid mb-3">
-                    <label for="input-invalid">Campo Inválido</label>
-                    <input id="input-invalid" type="text" placeholder="Campo com erro" />
-                    <div class="invalid-feedback">
-                      Este campo contém um erro de validação.
-                    </div>
-                  </div>
-                  <div class="br-input is-valid mb-3">
-                    <label for="input-valid">Campo Válido</label>
-                    <input id="input-valid" type="text" placeholder="Campo válido" />
-                    <div class="valid-feedback">Este campo está correto.</div>
-                  </div>
-                  <div class="br-input is-disabled">
-                    <label for="input-disabled">Campo Desabilitado</label>
-                    <input id="input-disabled" type="text" placeholder="Campo desabilitado" disabled />
-                  </div>
+                <div class="validation-states d-flex flex-column gap-4">
+                  <!-- Campo Normal -->
+                  <br-input
+                    id="input-normal"
+                    label="Campo Normal"
+                    placeholder="Campo sem validação"
+                  />
+
+                  <!-- Campo Sucesso -->
+                  <br-input
+                    id="input-success"
+                    label="Campo Sucesso"
+                    placeholder="Campo com sucesso"
+                    state="success"
+                    aria-describedby="feedback-success"
+                  >
+                    <br-message
+                      id="feedback-success"
+                      slot="feedback"
+                      state="success"
+                      is-feedback
+                      message="Este campo está correto."
+                      show-icon
+                      aria-label="Campo com sucesso"
+                    />
+                  </br-input>
+
+                  <!-- Campo Informação -->
+                  <br-input
+                    id="input-info"
+                    label="Campo Informação"
+                    placeholder="Campo com dica"
+                    state="info"
+                    aria-describedby="feedback-info"
+                  >
+                    <br-message
+                      id="feedback-info"
+                      slot="feedback"
+                      state="info"
+                      is-feedback
+                      message="Este campo fornece uma dica informativa."
+                      show-icon
+                      aria-label="Campo com informação"
+                    />
+                  </br-input>
+
+                  <!-- Campo Alerta -->
+                  <br-input
+                    id="input-warning"
+                    label="Campo Alerta"
+                    placeholder="Campo com alerta"
+                    state="warning"
+                    aria-describedby="feedback-warning"
+                  >
+                    <br-message
+                      id="feedback-warning"
+                      slot="feedback"
+                      state="warning"
+                      is-feedback
+                      message="Atenção! Verifique este campo."
+                      show-icon
+                      aria-label="Campo com alerta"
+                    />
+                  </br-input>
+
+                  <!-- Campo Erro -->
+                  <br-input
+                    id="input-error"
+                    label="Campo com Erro"
+                    placeholder="Campo com erro"
+                    state="danger"
+                    aria-invalid="true"
+                    aria-describedby="feedback-error"
+                  >
+                    <br-message
+                      id="feedback-error"
+                      slot="feedback"
+                      state="danger"
+                      is-feedback
+                      message="Este campo contém um erro de validação."
+                      show-icon
+                      aria-label="Campo com erro"
+                    />
+                  </br-input>
+
+                  <!-- Campo Desabilitado -->
+                  <br-input
+                    id="input-disabled"
+                    label="Campo Desabilitado"
+                    placeholder="Campo desabilitado"
+                    disabled
+                  />
                 </div>
               </div>
             </div>
@@ -292,6 +546,7 @@ const formulario = reactive({
   senha: "",
   confirmarSenha: "",
   termos: false,
+  genero: "",
 });
 
 // Estado para o formulário de pesquisa
@@ -311,6 +566,7 @@ const erros = reactive({
   senha: "",
   confirmarSenha: "",
   termos: "",
+  genero: "",
 });
 
 // Estado para os erros do formulário de pesquisa
@@ -513,6 +769,11 @@ const limparFormularioPesquisa = () => {
   Object.keys(errosPesquisa).forEach((key) => {
     errosPesquisa[key as keyof typeof errosPesquisa] = "";
   });
+};
+
+const estadoCampo = (erro: string) => {
+  console.log(erro, erro !== "", erro !== "" ? "danger" : undefined);
+  return erro !== "" ? "danger" : undefined;
 };
 </script>
 
