@@ -11,6 +11,16 @@
       />
     </div>
 
+    <br-message
+      v-if="mensagemVisivel"
+      type="success"
+      role="status"
+      aria-live="polite"
+      class="mensagem-copiada"
+    >
+      Cor copiada: {{ mensagemTexto }}
+    </br-message>
+
     <div class="colors-grid">
       <div
         v-for="color in filteredColors"
@@ -35,6 +45,8 @@ import { colors } from "../data/cores";
 
 const searchTerm = ref("");
 const clickedCard = ref<string | null>(null);
+const mensagemVisivel = ref(false);
+const mensagemTexto = ref("");
 
 const filteredColors = computed(() => {
   return colors.filter(
@@ -46,6 +58,15 @@ const filteredColors = computed(() => {
 
 function handleCardClick(color: { nome: string; hex: string }) {
   clickedCard.value = color.nome;
+
+  const texto = `${color.nome} - ${color.hex}`;
+  navigator.clipboard.writeText(texto).then(() => {
+    mensagemTexto.value = texto;
+    mensagemVisivel.value = true;
+    setTimeout(() => mensagemVisivel.value = false, 2000);
+  }).catch((err) => {
+    console.error("Erro ao copiar:", err);
+  });
 
   setTimeout(() => {
     clickedCard.value = null;
@@ -69,6 +90,10 @@ function handleCardClick(color: { nome: string; hex: string }) {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+}
+
+.mensagem-copiada {
+  margin-bottom: 1rem;
 }
 
 .colors-grid {
