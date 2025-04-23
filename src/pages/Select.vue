@@ -14,7 +14,6 @@
       <div class="card-content">
         <div class="d-flex justify-content-evenly mt-5 p-4">
           <br-select
-            show-search-icon
             label="Label"
             placeholder="Selecione uma opção"
             options='[
@@ -67,10 +66,37 @@
         </div>
       </div>
     </div>
+
+    <!-- 7. Integração com v-model em Vue -->
+    <div class="br-card screen-preview">
+      <div class="screen-header">
+        <div class="screen-title">7. v-model (Vue)</div>
+      </div>
+      <div class="card-content">
+        <br-select
+          v-model="selectedCar"
+          label="Carro favorito"
+          placeholder="Escolha um carro"
+          :options="carOptions"
+        />
+        <p class="mt-3">
+          Selecionado: <strong>{{ selectedCar }}</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+
+const selectedCar = ref<string>("");
+
+const carOptions = [
+  { label: "Ferrari", value: "ferrari" },
+  { label: "Lamborghini", value: "lamborghini" },
+  { label: "Porsche", value: "porsche" },
+];
 const multiSelectOptions = [
   { label: "Node.js", value: "node", selected: false },
   { label: "NestJS", value: "nestjs", selected: true },
