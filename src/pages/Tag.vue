@@ -6,6 +6,13 @@
       destacar informações de forma visual com diferentes estilos, interações e seleções.
     </p>
 
+    <br-message
+      show-icon
+      class="mb-4"
+      state="danger"
+      message="V-model não está funcionando corretamente"
+    />
+
     <!-- Grupo 1: Texto e Ícone, diferentes densidades -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
@@ -175,10 +182,60 @@
         ></br-tag>
       </div>
     </div>
+
+    <!-- 9. Exemplo com v-model (seleção múltipla) -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">9. Exemplo com v-model</div>
+      </div>
+      <div
+        class="card-content d-flex align-items-center gap-4 flex-wrap justify-content-evenly"
+      >
+        <br-tag
+          multiple
+          name="vmodel-tags"
+          icon-name="fa-solid:bicycle"
+          label="Bicicleta"
+          interaction-select
+          v-model="selectedTags"
+        ></br-tag>
+        <br-tag
+          multiple
+          name="vmodel-tags"
+          icon-name="fa-solid:ship"
+          label="Barco"
+          interaction-select
+          v-model="selectedTags"
+        ></br-tag>
+        <br-tag
+          multiple
+          name="vmodel-tags"
+          icon-name="fa-solid:car"
+          label="Carro"
+          interaction-select
+          v-model="selectedTags"
+        ></br-tag>
+      </div>
+      <div class="mt-3">
+        <br-message state="info" show-icon>
+          <span>
+            Selecionados:
+            <strong>{{
+              selectedTags.length ? selectedTags.join(", ") : "Nenhum"
+            }}</strong>
+          </span>
+        </br-message>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+// array reativo que contém os labels das tags selecionadas
+const selectedTags = ref<string[]>([]);
+</script>
 
 <style scoped>
 .tag-container {

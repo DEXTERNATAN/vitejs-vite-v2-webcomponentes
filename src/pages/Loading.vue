@@ -7,6 +7,18 @@
       processos no sistema.
     </p>
 
+    <br-message state="danger" show-icon class="mb-4">
+      <ul class="mb-0">
+        <li>
+          O <code>v-model</code> não está funcionando corretamente no componente
+          <code>&lt;br-loading&gt;</code>.
+        </li>
+        <li>
+          A barra de progresso não atualiza dinamicamente e a animação fica inconsistente.
+        </li>
+      </ul>
+    </br-message>
+
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
         <div class="screen-title">Loading Padrão com Texto</div>
@@ -71,6 +83,45 @@
         </div>
       </div>
     </div>
+
+    <!-- Exemplo 4: v-model de progresso -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">Exemplo 4: v-model de progresso</div>
+      </div>
+      <div class="card-content">
+        <br-message state="info" class="mb-4" show-icon>
+          Controle de barra via <code>v-model</code>.
+        </br-message>
+
+        <br-loading
+          is-progress
+          :progress-percent="vmProgress"
+          v-model="vmProgress"
+          :label="`${vmProgress}%`"
+        />
+
+        <div class="d-flex gap-2 mt-3">
+          <br-button
+            type="button"
+            density="small"
+            :disabled="vmProgress >= MAX"
+            @click="increment"
+          >
+            Aumentar ({{ vmProgress }}%)
+          </br-button>
+          <br-button
+            type="button"
+            density="small"
+            variant="secondary"
+            :disabled="vmProgress === 0"
+            @click="vmProgress = 0"
+          >
+            Resetar
+          </br-button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -81,6 +132,10 @@ import { ref } from "vue";
 const MAX_PROGRESS = 100;
 const PROGRESS_INCREMENT = 10;
 const INITIAL_PROGRESS = 0;
+
+const MAX = 100;
+const STEP = 10;
+const vmProgress = ref(0);
 
 // --- Estado Reativo ---
 const progress = ref<number>(INITIAL_PROGRESS);
@@ -95,6 +150,10 @@ const aumentarProgresso = () => {
 const resetarProgresso = () => {
   progress.value = INITIAL_PROGRESS;
 };
+
+function increment() {
+  vmProgress.value = Math.min(vmProgress.value + STEP, MAX);
+}
 </script>
 
 <style scoped>

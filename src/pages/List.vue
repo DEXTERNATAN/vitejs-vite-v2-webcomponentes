@@ -7,6 +7,13 @@
       horizontal, títulos, divisores e interações.
     </p>
 
+    <br-message
+      state="success"
+      message="Nenhuma inconsistência encontrada neste componente."
+      show-icon
+      class="mb-4"
+    />
+
     <!-- Exemplo 1: Densidades -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">

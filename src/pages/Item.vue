@@ -7,6 +7,13 @@
       ícones, botões, links e agrupamentos.
     </p>
 
+    <br-message
+      state="success"
+      message="Nenhuma inconsistência encontrada neste componente."
+      show-icon
+      class="mb-4"
+    />
+
     <!-- Exemplo 1: Densidade -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">

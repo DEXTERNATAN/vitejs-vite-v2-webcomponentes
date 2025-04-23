@@ -6,6 +6,13 @@
       permite alternar estados binários (ativado/desativado).
     </p>
 
+    <br-message
+      show-icon
+      class="mb-4"
+      state="danger"
+      message="V-model não está funcionando corretamente"
+    />
+
     <!-- Grupo 1: Densidade -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
@@ -74,10 +81,29 @@
         <br-switch id="switch-disabled" checked disabled>Disabled</br-switch>
       </div>
     </div>
+
+    <!-- 6. Exemplo com v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">6. Exemplo com v-model</div>
+      </div>
+      <div class="card-content d-flex flex-column align-items-center p-4">
+        <br-switch v-model="isToggled" label="Ativar recurso"> Usando v-model </br-switch>
+
+        <p class="mt-3">
+          Estado atual: <strong>{{ isToggled ? "Ligado" : "Desligado" }}</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+// estado ligado/desligado controlado por v-model
+const isToggled = ref(false);
+</script>
 
 <style scoped>
 .switch-container {

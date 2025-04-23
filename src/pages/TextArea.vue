@@ -7,6 +7,13 @@
       densidades e recursos adicionais.
     </p>
 
+    <br-message
+      state="danger"
+      message="As propriedades row e col não estão podendo ser definidas."
+      show-icon
+      class="mb-4"
+    />
+
     <!-- Grupo 1: Densidade -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
@@ -115,6 +122,23 @@
         </p>
       </div>
     </div>
+
+    <!-- Grupo 6: Exemplo básico com v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">6. Exemplo básico com v-model</div>
+      </div>
+      <div class="card-content p-4">
+        <br-textarea
+          label="Textarea (v-model)"
+          placeholder="Digite algo aqui..."
+          v-model="texto"
+        ></br-textarea>
+        <p class="mt-2">
+          Você digitou: <strong>{{ texto }}</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -124,6 +148,8 @@ import { ref } from "vue";
 const comentario = ref("");
 const comentarioState = ref<"success" | "danger" | undefined>(undefined);
 const mensagemValidacao = ref("");
+
+const texto = ref(""); // nova ref para v-model básico
 
 function validarComentario() {
   if (comentario.value.trim().length < 10) {

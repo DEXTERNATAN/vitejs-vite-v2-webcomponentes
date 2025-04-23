@@ -8,11 +8,10 @@
 
     <!-- Mensagem de feedback -->
     <br-message
-      state="success"
-      message="Componente OK"
-      is-feedback
       show-icon
       class="mb-4"
+      state="danger"
+      message="V-model não está funcionando corretamente"
     />
 
     <!-- 1. Densidade -->
@@ -162,11 +161,33 @@
         </div>
       </div>
     </div>
+
+    <!-- 6. Exemplo de v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">6. Exemplo de v-model</div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">
+          Vinculação bidirecional de estado com <code>v-model</code>.
+        </p>
+        <!-- v-model no br-button -->
+        <br-button v-model="pressed" emphasis="primary" density="medium">
+          {{ pressed ? "Desativar" : "Ativar" }}
+        </br-button>
+
+        <p class="mt-3">
+          Estado atual: <strong>{{ pressed }}</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// Nenhum script necessário por enquanto
+import { ref } from "vue";
+
+const pressed = ref(false);
 </script>
 
 <style scoped>

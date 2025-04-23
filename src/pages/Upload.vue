@@ -6,6 +6,13 @@
       exemplos de estados, validação, preview, envio e loading.
     </p>
 
+    <br-message
+      show-icon
+      class="mb-4"
+      state="danger"
+      message="V-model não está funcionando corretamente"
+    />
+
     <!-- 1. Upload simples -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
@@ -110,6 +117,23 @@
         </div>
       </div>
     </div>
+
+    <!-- 6. Exemplo com v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">6. Exemplo com v-model</div>
+      </div>
+      <div class="card-content d-flex flex-column justify-content-evenly p-4">
+        <br-upload label="Envio via v-model" v-model="arquivos" multiple></br-upload>
+
+        <p class="mt-3"><strong>Arquivos selecionados:</strong></p>
+        <ul>
+          <li v-for="file in arquivos" :key="file.name">
+            {{ file.name }} — {{ (file.size / 1024 / 1024).toFixed(2) }} MB
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -123,6 +147,9 @@ const previewUrl = ref("");
 const arquivoSelecionado = ref<File | null>(null);
 const isLoading = ref(false);
 const arquivoValido = ref(false);
+
+// Nova referência para v-model
+const arquivos = ref<File[]>([]);
 
 function handleFile(event: Event) {
   const input = event.target as HTMLInputElement;

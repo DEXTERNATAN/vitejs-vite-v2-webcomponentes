@@ -118,12 +118,6 @@ const itemAtivo = ref<string | null>(null);
 
 const menuItems = ref([
   {
-    id: "home",
-    name: "Home",
-    icon: "fas fa-home",
-    url: "/",
-  },
-  {
     id: "1",
     name: "Componentes",
     icon: "fas fa-puzzle-piece",
@@ -136,46 +130,22 @@ const menuItems = ref([
         url: "/avatar",
       },
       {
+        id: "1-8",
+        name: "Breadcrumb",
+        icon: "fas fa-book",
+        url: "/breadcrumb",
+      },
+      {
         id: "1-2",
         name: "Button",
         icon: "fas fa-hand-pointer",
         url: "/button",
       },
       {
-        id: "1-3",
-        name: "Input",
-        icon: "fas fa-keyboard",
-        url: "/input",
-      },
-      {
-        id: "1-4",
-        name: "Select",
-        icon: "fas fa-caret-square-down",
-        url: "/select",
-      },
-      {
         id: "1-5",
         name: "Checkbox",
         icon: "fas fa-check-square",
         url: "/checkbox",
-      },
-      {
-        id: "1-6",
-        name: "Radio",
-        icon: "fas fa-dot-circle",
-        url: "/radio",
-      },
-      {
-        id: "1-7",
-        name: "Message",
-        icon: "fas fa-envelope",
-        url: "/message",
-      },
-      {
-        id: "1-8",
-        name: "Breadcrumb",
-        icon: "fas fa-book",
-        url: "/breadcrumb",
       },
       {
         id: "1-9",
@@ -202,10 +172,22 @@ const menuItems = ref([
         url: "/dropdown",
       },
       {
+        id: "1-21",
+        name: "Formulário",
+        icon: "fas fa-edit",
+        url: "/formularios",
+      },
+      {
         id: "1-13",
         name: "Icon",
         icon: "fas fa-icons",
         url: "/icon",
+      },
+      {
+        id: "1-3",
+        name: "Input",
+        icon: "fas fa-keyboard",
+        url: "/input",
       },
       {
         id: "1-14",
@@ -224,6 +206,24 @@ const menuItems = ref([
         name: "Loading",
         icon: "fas fa-spinner",
         url: "/loading",
+      },
+      {
+        id: "1-7",
+        name: "Message",
+        icon: "fas fa-envelope",
+        url: "/message",
+      },
+      {
+        id: "1-6",
+        name: "Radio",
+        icon: "fas fa-dot-circle",
+        url: "/radio",
+      },
+      {
+        id: "1-4",
+        name: "Select",
+        icon: "fas fa-caret-square-down",
+        url: "/select",
       },
       {
         id: "1-17",
@@ -249,13 +249,13 @@ const menuItems = ref([
         icon: "fas fa-upload",
         url: "/upload",
       },
-      {
-        id: "1-21",
-        name: "Formulário",
-        icon: "fas fa-edit",
-        url: "/formularios",
-      },
     ],
+  },
+  {
+    id: "cores",
+    name: "Cores",
+    icon: "fas fa-palette",
+    url: "/cores",
   },
   {
     id: "2",
@@ -263,6 +263,12 @@ const menuItems = ref([
     icon: "fas fa-tachometer-alt",
     expanded: false,
     children: [
+      {
+        id: "2-3",
+        name: "Formulários de Validação",
+        icon: "fas fa-check-circle",
+        url: "/formularios-validacao",
+      },
       {
         id: "2-1",
         name: "Gráficos",
@@ -275,19 +281,19 @@ const menuItems = ref([
         icon: "fas fa-desktop",
         url: "/telas",
       },
-      {
-        id: "2-3",
-        name: "Formulários de Validação",
-        icon: "fas fa-check-circle",
-        url: "/formularios-validacao",
-      },
     ],
   },
   {
-    id: "cores",
-    name: "Cores",
-    icon: "fas fa-palette",
-    url: "/cores",
+    id: "home",
+    name: "Home",
+    icon: "fas fa-home",
+    url: "/",
+  },
+  {
+    id: "project",
+    name: "Sobre o Projeto",
+    icon: "fas fa-info-circle",
+    url: "/sobre",
   },
 ]);
 

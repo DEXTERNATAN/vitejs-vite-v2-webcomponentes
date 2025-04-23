@@ -6,6 +6,13 @@
       permite a navegação hierárquica entre as páginas do sistema.
     </p>
 
+    <br-message
+      state="success"
+      message="Nenhuma inconsistência encontrada neste componente."
+      show-icon
+      class="mb-4"
+    />
+
     <!-- Exemplo de Breadcrumb -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">

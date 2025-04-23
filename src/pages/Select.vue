@@ -6,6 +6,14 @@
       permite a seleção de opções em um menu suspenso.
     </p>
 
+    <!-- Aviso sobre erro conhecido -->
+    <br-message
+      show-icon
+      class="mb-4"
+      state="danger"
+      message="V-model não está funcionando corretamente"
+    />
+
     <!-- Exemplo de Select Simples -->
     <div class="br-card screen-preview">
       <div class="screen-header">

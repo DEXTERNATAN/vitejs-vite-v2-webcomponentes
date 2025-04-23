@@ -6,6 +6,13 @@
       a seleção única entre múltiplas opções em um formulário.
     </p>
 
+    <br-message
+      show-icon
+      class="mb-4"
+      state="danger"
+      message="V-model não está funcionando corretamente"
+    />
+
     <!-- Grupo 1: Radio Verticais -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
@@ -96,10 +103,61 @@
         </div>
       </div>
     </div>
+
+    <!-- 7. Exemplo com v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">7. Exemplo com v-model</div>
+      </div>
+      <div class="card-content p-4">
+        <p class="mb-2"><strong>Escolha sua opção favorita:</strong></p>
+        <div
+          class="radio-group horizontal"
+          role="radiogroup"
+          aria-label="Exemplo com v-model"
+        >
+          <br-radio
+            name="vmodel-group"
+            value="opcao1"
+            label="Opção 1"
+            :checked="selected === 'opcao1'"
+            @change="onChange"
+          />
+          <br-radio
+            name="vmodel-group"
+            value="opcao2"
+            label="Opção 2"
+            :checked="selected === 'opcao2'"
+            @change="onChange"
+          />
+          <br-radio
+            name="vmodel-group"
+            value="opcao3"
+            label="Opção 3"
+            :checked="selected === 'opcao3'"
+            @change="onChange"
+          />
+        </div>
+
+        <p class="mt-3">
+          Opção selecionada: <strong>{{ selected }}</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const selected = ref("opcao1");
+
+function onChange(ev: Event) {
+  // o target é o br-radio, que reflete a prop 'value'
+  const radio = ev.target as HTMLInputElement;
+  selected.value = radio.value;
+}
+</script>
 
 <style scoped>
 .radio-container {

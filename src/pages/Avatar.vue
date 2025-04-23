@@ -10,8 +10,7 @@
     <!-- Aviso sobre erro conhecido -->
     <br-message
       state="danger"
-      message="Erro na dimensão do ícone quando utilizado com botão do tipo circle."
-      is-feedback
+      message="Erro na dimensão do ícone quando utilizado com botão do tipo circle. Com propriedades width e height."
       show-icon
       class="mb-4"
     />

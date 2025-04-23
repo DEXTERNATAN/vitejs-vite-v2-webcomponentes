@@ -9,9 +9,8 @@
 
     <!-- Aviso sobre erro conhecido -->
     <br-message
-      state="danger"
-      message="Erro conhecido: sobreposição de ícone com botão do tipo 'circle'."
-      is-feedback
+      state="success"
+      message="Nenhuma inconsistência encontrada neste componente."
       show-icon
       class="mb-4"
     />

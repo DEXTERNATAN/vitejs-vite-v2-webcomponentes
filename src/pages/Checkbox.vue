@@ -6,6 +6,13 @@
       permite a seleção de múltiplas opções em um formulário.
     </p>
 
+    <br-message
+      state="danger"
+      message="O v-model não está funcionando corretamente no componente <br-checkbox>."
+      show-icon
+      class="mb-4"
+    />
+
     <!-- Grupo 1: Checkboxes verticais -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
@@ -121,10 +128,30 @@
         </div>
       </div>
     </div>
+
+    <!-- 7. Exemplo de v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">7. Exemplo de v-model</div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">
+          Vinculação bidirecional de estado com <code>v-model</code>.
+        </p>
+        <br-checkbox v-model="checked" name="checkbox-vmodel" label="Ativar opção" />
+        <p class="mt-3">
+          Valor atual: <strong>{{ checked }}</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const checked = ref(false);
+</script>
 
 <style scoped>
 .checkbox-container {

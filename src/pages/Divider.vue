@@ -6,6 +6,13 @@
       para criar separações visuais entre conteúdos.
     </p>
 
+    <br-message
+      state="success"
+      message="Nenhuma inconsistência encontrada neste componente."
+      show-icon
+      class="mb-4"
+    />
+
     <!-- Exemplo 1: Divider padrão e modo escuro -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">

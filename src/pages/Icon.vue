@@ -7,6 +7,19 @@
       alinhamento.
     </p>
 
+    <br-message state="danger" show-icon class="mb-4">
+      <ul class="mb-0">
+        <li>
+          O ícone nao permite trocar a cor quando usa-se a propriedade
+          <code>css-classes</code>
+        </li>
+        <li>
+          O <code>v-model</code> não está funcionando corretamente no componente
+          <code>&lt;br-icon&gt;</code>.
+        </li>
+      </ul>
+    </br-message>
+
     <!-- Exemplo 1: Ícones com flip -->
     <div class="br-card screen-preview mb-4">
       <div class="screen-header">
@@ -83,7 +96,7 @@
       <div class="screen-header">
         <div class="screen-title">Outras variações de uso</div>
       </div>
-      <div class="card-content">
+      <div class="card-content adjust-card-height">
         <div class="d-flex flex-wrap justify-content-evenly gap-4 mt-3 p-2">
           <!-- Ícone com customId -->
           <div class="text-center">
@@ -113,7 +126,7 @@
       <div class="screen-header">
         <div class="screen-title">Variação de cor</div>
       </div>
-      <div class="card-content">
+      <div class="card-content adjust-card-height">
         <div class="d-flex flex-wrap justify-content-evenly mt-3 p-2">
           <div class="text-center">
             <br-icon
@@ -167,11 +180,49 @@
         </div>
       </div>
     </div>
+
+    <!-- Exemplo 8: Controle de cor via v-model -->
+    <div class="br-card screen-preview mb-4">
+      <div class="screen-header">
+        <div class="screen-title">Controle de cor via v-model</div>
+      </div>
+      <div class="card-content adjust-card-height p-2">
+        <!-- seletor de cor -->
+        <br-select
+          v-model="iconColor"
+          label="Selecione a cor do ícone"
+          placeholder="Escolha uma cor"
+          :options="colorOptions"
+          density="medium"
+        />
+        <!-- ícone com css-classes reativo -->
+        <div class="mt-4 text-center">
+          <br-icon
+            icon-name="fa-solid:star"
+            :css-classes="iconColor"
+            width="48"
+            height="48"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// Nenhuma lógica reativa necessária neste exemplo
+import { ref } from "vue";
+
+// estado reativo para a classe de cor
+const iconColor = ref("text-danger");
+
+// opções de cor apresentadas no select
+const colorOptions = [
+  { label: "Verde (Sucesso)", value: "text-success" },
+  { label: "Amarelo (Alerta)", value: "text-warning" },
+  { label: "Vermelho (Erro)", value: "text-danger" },
+  { label: "Azul (Informativo)", value: "text-primary" },
+  { label: "Roxo (Energia)", value: "text-purple" },
+];
 </script>
 
 <style scoped>
@@ -206,8 +257,23 @@
   background-color: white;
 }
 
-/* Exemplo se não houver uma classe como text-purple no seu design system */
+.adjust-card-height {
+  height: 190px;
+}
+
+.text-success {
+  color: green;
+}
+.text-warning {
+  color: orange;
+}
+.text-danger {
+  color: red;
+}
+.text-primary {
+  color: blue;
+}
 .text-purple {
-  color: #8000ff;
+  color: purple;
 }
 </style>
