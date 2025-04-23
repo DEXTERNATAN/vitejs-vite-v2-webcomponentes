@@ -1,7 +1,14 @@
 <template>
   <div class="menu-body" role="tree">
     <!-- Renderizando dinamicamente cada seção (folder ou item simples) -->
-    <div v-for="folder in menuItems" :key="folder.id" class="menu-folder">
+    <div
+      v-for="folder in menuItems"
+      :key="folder.id"
+      class="menu-folder drop-menu"
+      :class="{
+        active: folder.expanded,
+      }"
+    >
       <!-- Item sem submenu -->
       <a
         v-if="!folder.children || folder.children.length === 0"
@@ -11,7 +18,7 @@
         tabindex="0"
         aria-level="1"
         :aria-current="itemAtivo === folder.id ? 'true' : null"
-        :class="{ active: itemAtivo === folder.id }"
+        :class="{ active: itemAtivo === folder.id && !folder.expanded }"
         @click.prevent="navigate(folder.url, folder.id)"
         @keydown.enter.space.prevent="navigate(folder.url, folder.id)"
       >
@@ -30,6 +37,7 @@
           tabindex="0"
           :aria-expanded="folder.expanded.toString()"
           aria-level="1"
+          :class="{ active: itemAtivo === folder.id && !folder.expanded }"
           @click="toggleFolder(folder.id)"
           @keydown.enter.space.prevent="toggleFolder(folder.id)"
         >
@@ -37,6 +45,9 @@
             <i :class="folder.icon" aria-hidden="true"></i>
           </span>
           <span class="content">{{ folder.name }}</span>
+          <span class="support">
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </span>
         </a>
 
         <ul
@@ -122,6 +133,38 @@ const menuItems = ref([
     name: "Home",
     icon: "fas fa-home",
     url: "/",
+  },
+  {
+    id: "cores",
+    name: "Cores",
+    icon: "fas fa-palette",
+    url: "/cores",
+  },
+  {
+    id: "2",
+    name: "Dashboard",
+    icon: "fas fa-tachometer-alt",
+    expanded: false,
+    children: [
+      {
+        id: "2-3",
+        name: "Formulários de Validação",
+        icon: "fas fa-check-circle",
+        url: "/formularios-validacao",
+      },
+      {
+        id: "2-1",
+        name: "Gráficos",
+        icon: "fas fa-chart-line",
+        url: "/graficos",
+      },
+      {
+        id: "2-2",
+        name: "Telas",
+        icon: "fas fa-desktop",
+        url: "/telas",
+      },
+    ],
   },
   {
     id: "1",
@@ -257,38 +300,6 @@ const menuItems = ref([
       },
     ],
   },
-  {
-    id: "cores",
-    name: "Cores",
-    icon: "fas fa-palette",
-    url: "/cores",
-  },
-  {
-    id: "2",
-    name: "Dashboard",
-    icon: "fas fa-tachometer-alt",
-    expanded: false,
-    children: [
-      {
-        id: "2-3",
-        name: "Formulários de Validação",
-        icon: "fas fa-check-circle",
-        url: "/formularios-validacao",
-      },
-      {
-        id: "2-1",
-        name: "Gráficos",
-        icon: "fas fa-chart-line",
-        url: "/graficos",
-      },
-      {
-        id: "2-2",
-        name: "Telas",
-        icon: "fas fa-desktop",
-        url: "/telas",
-      },
-    ],
-  },
 ]);
 
 const project = ref({
@@ -298,10 +309,13 @@ const project = ref({
 });
 
 function toggleFolder(id: string) {
-  const folder = menuItems.value.find((item) => item.id === id);
-  if (folder) {
-    folder.expanded = !folder.expanded;
-  }
+  menuItems.value.forEach((item) => {
+    if (item.id === id) {
+      item.expanded = !item.expanded;
+    } else {
+      item.expanded = false;
+    }
+  });
 }
 
 function navigate(url: string, id: string) {
@@ -314,5 +328,34 @@ function navigate(url: string, id: string) {
 .menu-item.active {
   font-weight: bold;
   background-color: #e7f1ff;
+}
+
+.menu-folder.active {
+  background-color: rgba(19, 81, 180, 0.05);
+}
+
+.menu-folder.has-children > .menu-item {
+  position: relative;
+}
+
+.menu-folder.has-children > .menu-item::after {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: solid #1351b4;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transition: transform 0.3s ease;
+}
+
+.menu-folder.active.has-children > .menu-item::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.menu-folder.active > .menu-item {
+  font-weight: bold;
 }
 </style>

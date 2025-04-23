@@ -105,7 +105,12 @@ export default {
     <main class="d-flex flex-fill mb-5" id="main">
       <div class="container-fluid d-flex">
         <div class="row">
-          <div class="br-menu push active" id="main-navigation" v-show="isMenuVisible">
+          <div
+            class="br-menu push active"
+            id="main-navigation"
+            v-show="isMenuVisible"
+            style="width: 250px"
+          >
             <div class="menu-container">
               <div class="menu-panel">
                 <div class="menu-header" data-visible="false">
