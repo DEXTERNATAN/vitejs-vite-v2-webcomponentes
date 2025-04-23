@@ -5,9 +5,7 @@
       v-for="folder in menuItems"
       :key="folder.id"
       class="menu-folder drop-menu"
-      :class="{
-        active: folder.expanded,
-      }"
+      :class="{ active: folder.expanded }"
     >
       <!-- Item sem submenu -->
       <a
@@ -62,7 +60,7 @@
               class="menu-item"
               role="treeitem"
               tabindex="0"
-              :aria-level="2"
+              aria-level="2"
               :aria-current="itemAtivo === child.id ? 'true' : null"
               :class="{ active: itemAtivo === child.id }"
               @click.prevent="navigate(child.url, child.id)"
@@ -127,18 +125,17 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const itemAtivo = ref<string | null>(null);
 
+// Ordem reestruturada seguindo a hierarquia de informação:
+// 1. Home
+// 2. Dashboard
+// 3. Componentes
+// 4. Cores
 const menuItems = ref([
   {
     id: "home",
     name: "Home",
     icon: "fas fa-home",
     url: "/",
-  },
-  {
-    id: "cores",
-    name: "Cores",
-    icon: "fas fa-palette",
-    url: "/cores",
   },
   {
     id: "2",
@@ -172,133 +169,34 @@ const menuItems = ref([
     icon: "fas fa-puzzle-piece",
     expanded: false,
     children: [
-      {
-        id: "1-1",
-        name: "Avatar",
-        icon: "fas fa-user",
-        url: "/avatar",
-      },
-      {
-        id: "1-8",
-        name: "Breadcrumb",
-        icon: "fas fa-book",
-        url: "/breadcrumb",
-      },
-      {
-        id: "1-2",
-        name: "Button",
-        icon: "fas fa-hand-pointer",
-        url: "/button",
-      },
-      {
-        id: "1-5",
-        name: "Checkbox",
-        icon: "fas fa-check-square",
-        url: "/checkbox",
-      },
-      {
-        id: "1-9",
-        name: "Checkgroup",
-        icon: "fas fa-toggle-on",
-        url: "/checkgroup",
-      },
-      {
-        id: "1-10",
-        name: "Collapse",
-        icon: "fas fa-angle-down",
-        url: "/collapse",
-      },
-      {
-        id: "1-11",
-        name: "Divider",
-        icon: "fas fa-minus",
-        url: "/divider",
-      },
-      {
-        id: "1-12",
-        name: "Dropdown",
-        icon: "fas fa-caret-down",
-        url: "/dropdown",
-      },
-      {
-        id: "1-21",
-        name: "Formulário",
-        icon: "fas fa-edit",
-        url: "/formularios",
-      },
-      {
-        id: "1-13",
-        name: "Icon",
-        icon: "fas fa-icons",
-        url: "/icon",
-      },
-      {
-        id: "1-3",
-        name: "Input",
-        icon: "fas fa-keyboard",
-        url: "/input",
-      },
-      {
-        id: "1-14",
-        name: "Item",
-        icon: "fas fa-list",
-        url: "/item",
-      },
-      {
-        id: "1-15",
-        name: "List",
-        icon: "fas fa-list-alt",
-        url: "/list",
-      },
-      {
-        id: "1-16",
-        name: "Loading",
-        icon: "fas fa-spinner",
-        url: "/loading",
-      },
-      {
-        id: "1-7",
-        name: "Message",
-        icon: "fas fa-envelope",
-        url: "/message",
-      },
-      {
-        id: "1-6",
-        name: "Radio",
-        icon: "fas fa-dot-circle",
-        url: "/radio",
-      },
-      {
-        id: "1-4",
-        name: "Select",
-        icon: "fas fa-caret-square-down",
-        url: "/select",
-      },
-      {
-        id: "1-17",
-        name: "Switch",
-        icon: "fas fa-toggle-on",
-        url: "/switch",
-      },
-      {
-        id: "1-18",
-        name: "Tag",
-        icon: "fas fa-tag",
-        url: "/tag",
-      },
-      {
-        id: "1-19",
-        name: "TextArea",
-        icon: "fas fa-pencil-alt",
-        url: "/textarea",
-      },
-      {
-        id: "1-20",
-        name: "Upload",
-        icon: "fas fa-upload",
-        url: "/upload",
-      },
+      { id: "1-1", name: "Avatar", icon: "fas fa-user", url: "/avatar" },
+      { id: "1-8", name: "Breadcrumb", icon: "fas fa-book", url: "/breadcrumb" },
+      { id: "1-2", name: "Button", icon: "fas fa-hand-pointer", url: "/button" },
+      { id: "1-5", name: "Checkbox", icon: "fas fa-check-square", url: "/checkbox" },
+      { id: "1-9", name: "Checkgroup", icon: "fas fa-toggle-on", url: "/checkgroup" },
+      { id: "1-10", name: "Collapse", icon: "fas fa-angle-down", url: "/collapse" },
+      { id: "1-11", name: "Divider", icon: "fas fa-minus", url: "/divider" },
+      { id: "1-12", name: "Dropdown", icon: "fas fa-caret-down", url: "/dropdown" },
+      { id: "1-21", name: "Formulário", icon: "fas fa-edit", url: "/formularios" },
+      { id: "1-13", name: "Icon", icon: "fas fa-icons", url: "/icon" },
+      { id: "1-3", name: "Input", icon: "fas fa-keyboard", url: "/input" },
+      { id: "1-14", name: "Item", icon: "fas fa-list", url: "/item" },
+      { id: "1-15", name: "List", icon: "fas fa-list-alt", url: "/list" },
+      { id: "1-16", name: "Loading", icon: "fas fa-spinner", url: "/loading" },
+      { id: "1-7", name: "Message", icon: "fas fa-envelope", url: "/message" },
+      { id: "1-6", name: "Radio", icon: "fas fa-dot-circle", url: "/radio" },
+      { id: "1-4", name: "Select", icon: "fas fa-caret-square-down", url: "/select" },
+      { id: "1-17", name: "Switch", icon: "fas fa-toggle-on", url: "/switch" },
+      { id: "1-18", name: "Tag", icon: "fas fa-tag", url: "/tag" },
+      { id: "1-19", name: "TextArea", icon: "fas fa-pencil-alt", url: "/textarea" },
+      { id: "1-20", name: "Upload", icon: "fas fa-upload", url: "/upload" },
     ],
+  },
+  {
+    id: "cores",
+    name: "Cores",
+    icon: "fas fa-palette",
+    url: "/cores",
   },
 ]);
 
@@ -310,11 +208,7 @@ const project = ref({
 
 function toggleFolder(id: string) {
   menuItems.value.forEach((item) => {
-    if (item.id === id) {
-      item.expanded = !item.expanded;
-    } else {
-      item.expanded = false;
-    }
+    item.expanded = item.id === id ? !item.expanded : false;
   });
 }
 
