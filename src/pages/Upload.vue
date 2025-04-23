@@ -18,7 +18,7 @@
       <div class="screen-header">
         <div class="screen-title">1. Upload simples</div>
       </div>
-      <div class="card-content d-flex flex-wrap justify-content-evenly p-4">
+      <div class="card-content d-flex flex-column justify-content-evenly p-4">
         <br-upload label="Envio de arquivo"></br-upload>
       </div>
     </div>
@@ -50,7 +50,7 @@
       <div class="screen-header">
         <div class="screen-title">3. Upload múltiplo</div>
       </div>
-      <div class="card-content d-flex flex-wrap justify-content-evenly p-4">
+      <div class="card-content d-flex flex-column justify-content-evenly p-4">
         <br-upload label="Envio de arquivos" multiple></br-upload>
       </div>
     </div>
