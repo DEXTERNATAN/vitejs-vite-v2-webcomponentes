@@ -237,10 +237,28 @@
         </div>
       </div>
     </div>
+
+    <!-- 6. Integração com v-model em Vue -->
+    <div class="br-card screen-preview">
+      <div class="screen-header">
+        <div class="screen-title">6. v-model (Vue)</div>
+      </div>
+      <div class="card-content">
+        <br-input name="name" placeholder="Por favor, digite seu nome..." v-model="name">
+        </br-input>
+        <p class="mt-3">
+          Selecionado: <strong>{{ name }}</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const name = ref("Lorem ipsum");
+</script>
 
 <style scoped>
 .button-container {
