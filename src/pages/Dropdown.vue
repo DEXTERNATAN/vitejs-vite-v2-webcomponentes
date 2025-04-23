@@ -32,19 +32,19 @@
           </br-button>
 
           <br-list slot="target" list-title="Ações disponíveis">
-            <br-item>
+            <br-item is-interactive>
               <br-icon slot="start" icon-name="fa6-solid:heart-pulse" />
               Ação 01
               <span slot="end">META</span>
             </br-item>
             <span class="br-divider"></span>
-            <br-item>
+            <br-item is-interactive>
               <br-icon slot="start" icon-name="fa6-solid:heart-pulse" />
               Ação 02
               <span slot="end">META</span>
             </br-item>
             <span class="br-divider"></span>
-            <br-item>
+            <br-item is-interactive>
               <br-icon slot="start" icon-name="fa6-solid:heart-pulse" />
               Ação 03
               <span slot="end">META</span>
@@ -67,15 +67,15 @@
           </br-button>
 
           <br-list slot="target">
-            <br-item>
+            <br-item is-interactive>
               <br-icon slot="start" icon-name="fa6-solid:pen" />
               Editar
             </br-item>
-            <br-item>
+            <br-item  is-interactive>
               <br-icon slot="start" icon-name="fa6-solid:trash" />
               Excluir
             </br-item>
-            <br-item>
+            <br-item  is-interactive>
               <br-icon slot="start" icon-name="fa6-solid:share-nodes" />
               Compartilhar
             </br-item>

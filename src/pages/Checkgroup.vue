@@ -7,7 +7,7 @@
     </p>
 
     <br-message
-      state="success"
+      state="danger"
       message="O v-model não está funcionando corretamente no componente <br-checkgroup>."
       show-icon
       class="mb-4"

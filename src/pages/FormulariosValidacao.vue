@@ -31,15 +31,17 @@
                         type="text"
                         placeholder="Digite seu nome completo"
                         @blur="validarCampo('nome')"
-                      />
-                      <br-message
-                        v-if="erros.nome"
-                        state="danger"
-                        is-feedback
-                        :message="erros.nome"
-                        show-icon
-                        :aria-label="erros.nome"
-                      />
+                      >
+                        <br-message
+                          slot="feedback"
+                          v-if="erros.nome"
+                          state="danger"
+                          is-feedback
+                          :message="erros.nome"
+                          show-icon
+                          :aria-label="erros.nome"
+                        />
+                      </br-input>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
