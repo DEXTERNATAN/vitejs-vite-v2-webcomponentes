@@ -118,6 +118,12 @@ const itemAtivo = ref<string | null>(null);
 
 const menuItems = ref([
   {
+    id: "home",
+    name: "Home",
+    icon: "fas fa-home",
+    url: "/",
+  },
+  {
     id: "1",
     name: "Componentes",
     icon: "fas fa-puzzle-piece",
@@ -282,18 +288,6 @@ const menuItems = ref([
         url: "/telas",
       },
     ],
-  },
-  {
-    id: "home",
-    name: "Home",
-    icon: "fas fa-home",
-    url: "/",
-  },
-  {
-    id: "project",
-    name: "Sobre o Projeto",
-    icon: "fas fa-info-circle",
-    url: "/sobre",
   },
 ]);
 
