@@ -1,38 +1,56 @@
 <template>
   <div class="cores-container">
-    <h1>Cores do Design System</h1>
+    <header class="page-header">
+      <h1>Cores do Design System</h1>
+      <p class="subtitle">Explore nossa paleta de cores e copie os valores facilmente</p>
+    </header>
 
-    <div class="search-container">
-      <input
-        type="text"
-        v-model="searchTerm"
-        placeholder="Buscar cor..."
-        class="search-input"
-      />
+    <div class="controls-container">
+      <div class="search-wrapper">
+        <div class="search-input-container">
+          <br-input
+            type="text"
+            v-model="searchTerm"
+            id="inputButtonRight"
+            placeholder="Buscar por nome, hex ou token..."
+          >
+            <br-icon
+              slot="action"
+              icon-name="fa-solid:search"
+              height="16"
+              aria-hidden="true"
+            />
+          </br-input>
+          <p v-if="!searchTerm">Total de cores na paleta: {{ filteredColors.length }}</p>
+          <p v-if="searchTerm && filteredColors.length !== 0">
+            Total de cores encontradas na busca: {{ filteredColors.length }}
+          </p>
+        </div>
+      </div>
     </div>
 
     <br-message
       v-if="mensagemVisivel"
       state="info"
-      role="status"
-      show-icon
+      :message="mensagemTexto"
+      is-inline
       is-closable
-      aria-live="polite"
-      class="mensagem-copiada"
-    >
-      Cor copiada: {{ mensagemTexto }}
-    </br-message>
+      show-icon
+      aria-label="info: Cor copiada com sucesso"
+      @click="mensagemVisivel = false"
+    ></br-message>
 
     <br-message
       v-if="searchTerm && filteredColors.length === 0"
       state="warning"
-      role="status"
-      aria-live="polite"
+      is-inline
+      show-icon
+      aria-label="info: Cor copiada com sucesso"
     >
       Nenhuma cor encontrada para a busca: "{{ searchTerm }}"
     </br-message>
 
-    <div class="colors-grid">
+    <div class="colors-grid" role="grid">
       <div
         v-for="color in filteredColors"
         :key="color.nome"
@@ -40,14 +58,24 @@
         :style="{ backgroundColor: color.hex }"
         @click="handleCardClick(color)"
         :class="{ 'card-clicked': clickedCard === color.nome }"
+        role="gridcell"
+        tabindex="0"
+        @keypress.enter="handleCardClick(color)"
+        :aria-label="'Cor ' + color.nome + '. Pressione Enter para copiar'"
       >
+        <div class="color-preview" :style="{ backgroundColor: color.hex }"></div>
         <div class="color-info">
           <h3>{{ color.nome }}</h3>
-          <p>{{ color.hex }}</p>
-          <p>{{ color.token }}</p>
+          <p class="hex-value">{{ color.hex }}</p>
+          <p class="token-value">{{ color.token }}</p>
+          <span class="copy-hint">Clique para copiar</span>
         </div>
       </div>
     </div>
+
+    <!-- <footer class="page-footer">
+      <p>Total de cores: {{ filteredColors.length }}</p>
+    </footer> -->
   </div>
 </template>
 
@@ -61,26 +89,33 @@ const mensagemVisivel = ref(false);
 const mensagemTexto = ref("");
 
 const filteredColors = computed(() => {
-  return colors.filter(
-    (color) =>
+  return colors.filter((color) => {
+    const matchesSearch =
+      !searchTerm.value ||
       color.nome.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-      color.hex.toLowerCase().includes(searchTerm.value.toLowerCase())
-  );
+      color.hex.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+      color.token?.toLowerCase().includes(searchTerm.value.toLowerCase());
+
+    return matchesSearch;
+  });
 });
 
-function handleCardClick(color: { nome: string; hex: string }) {
+function handleCardClick(color: { nome: string; hex: string; token?: string }) {
   clickedCard.value = color.nome;
 
-  const texto = `\nNome: ${color.nome} - Hexadecimal: ${color.hex} - Token: ${color.hex}`;
+  const texto = `\nNome: ${color.nome}\nHexadecimal: ${color.hex}\nToken: ${
+    color.token || "N/A"
+  }`;
   navigator.clipboard
     .writeText(texto)
     .then(() => {
-      mensagemTexto.value = texto;
+      mensagemTexto.value = `Cor copiada com sucesso!\n${texto}`;
       mensagemVisivel.value = true;
-      // setTimeout(() => (mensagemVisivel.value = false), 2000);
     })
     .catch((err) => {
       console.error("Erro ao copiar:", err);
+      mensagemTexto.value = "Erro ao copiar a cor. Por favor, tente novamente.";
+      mensagemVisivel.value = true;
     });
 
   setTimeout(() => {
@@ -92,23 +127,41 @@ function handleCardClick(color: { nome: string; hex: string }) {
 <style scoped>
 .cores-container {
   padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.search-container {
-  margin: 2rem 0;
+.page-header {
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-.search-input {
+.subtitle {
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.controls-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  flex: 1;
+  min-width: 300px;
+}
+
+.search-input-container {
+  position: relative;
   width: 100%;
-  max-width: 400px;
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
 }
 
-.mensagem-copiada {
-  margin-bottom: 1rem;
+.search-input-container p {
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .colors-grid {
@@ -127,6 +180,10 @@ function handleCardClick(color: { nome: string; hex: string }) {
 @media (max-width: 768px) {
   .colors-grid {
     grid-template-columns: 1fr;
+  }
+
+  .controls-container {
+    flex-direction: column;
   }
 }
 
@@ -151,8 +208,29 @@ function handleCardClick(color: { nome: string; hex: string }) {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.color-card:hover .copy-hint {
+  opacity: 1;
+}
+
+.color-card:focus {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
 .card-clicked {
   animation: clickAnimation 0.5s ease;
+}
+
+.copy-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 @keyframes clickAnimation {
