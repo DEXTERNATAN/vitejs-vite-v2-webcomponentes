@@ -1,6 +1,9 @@
 <template>
   <div class="cores-container">
     <header class="page-header">
+      <div class="framework-logo">
+        <img src="https://vuejs.org/images/logo.png" alt="Vue.js Logo" class="vue-logo" />
+      </div>
       <h1>Cores do Design System</h1>
       <p class="subtitle">Explore nossa paleta de cores e copie os valores facilmente</p>
     </header>
@@ -278,5 +281,15 @@ function handleCardClick(color: { nome: string; hex: string; token?: string }) {
   height: 6px;
   background-color: currentColor;
   border-radius: 50%;
+}
+
+.framework-logo {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.vue-logo {
+  height: 120px;
+  width: auto;
 }
 </style>

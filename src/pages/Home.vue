@@ -1,5 +1,10 @@
 <template>
   <section class="container mx-auto px-4 max-w-4xl">
+    <!-- Logo do Framework -->
+    <div class="framework-logo">
+      <img src="https://vuejs.org/images/logo.png" alt="Vue.js Logo" class="vue-logo" />
+    </div>
+
     <!-- Mensagem de atenção -->
     <br-message state="info" show-icon class="mb-4">
       <strong class="font-semibold">Atenção:</strong> confira as informações abaixo!
@@ -32,5 +37,15 @@
 <style scoped>
 .bg-card-pesquisa {
   background: linear-gradient(135deg, rgb(148, 226, 240, 0.36), rgb(1, 193, 214, 0.36));
+}
+
+.framework-logo {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.vue-logo {
+  height: 120px;
+  width: auto;
 }
 </style>
