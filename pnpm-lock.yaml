@@ -9,11 +9,11 @@ dependencies:
     specifier: ^3.6.1
     version: 3.6.1
   '@govbr-ds/webcomponents':
-    specifier: ^2.0.0-next.37
-    version: 2.0.0-next.37(@govbr-ds/core@3.6.1)
+    specifier: ^2.0.0-next.40
+    version: 2.0.0-next.40(@govbr-ds/core@3.6.1)
   '@govbr-ds/webcomponents-vue':
-    specifier: ^2.0.0-next.37
-    version: 2.0.0-next.37(@govbr-ds/core@3.6.1)(vue-router@4.5.0)(vue@3.5.13)
+    specifier: ^2.0.0-next.40
+    version: 2.0.0-next.40(@govbr-ds/core@3.6.1)(vue-router@4.5.0)(vue@3.5.13)
   axios:
     specifier: ^1.8.4
     version: 1.8.4
@@ -295,12 +295,12 @@ packages:
       flatpickr: 4.6.13
     dev: false
 
-  /@govbr-ds/webcomponents-vue@2.0.0-next.37(@govbr-ds/core@3.6.1)(vue-router@4.5.0)(vue@3.5.13):
-    resolution: {integrity: sha512-QsEhwQDHg/FrdqfyWFAdIs+WdHeHfAxICEemtZs8dAbTkf7oxkyCNm8Zh9/vii+Z+YdWVlK+RYxKHdoFUU3fAQ==}
+  /@govbr-ds/webcomponents-vue@2.0.0-next.40(@govbr-ds/core@3.6.1)(vue-router@4.5.0)(vue@3.5.13):
+    resolution: {integrity: sha512-l9t5Brj4y5LeEK6g6vHkWO+5RbMPFR18iLgHYkJAZyO2cR0nTwHkr1y8MhN/1cEUWrVhblPfFuA6A2BIrK7tnA==}
     peerDependencies:
       vue: '>=3.3.0'
     dependencies:
-      '@govbr-ds/webcomponents': 2.0.0-next.37(@govbr-ds/core@3.6.1)
+      '@govbr-ds/webcomponents': 2.0.0-next.40(@govbr-ds/core@3.6.1)
       '@stencil/vue-output-target': 0.10.7(vue-router@4.5.0)(vue@3.5.13)
       vue: 3.5.13
     transitivePeerDependencies:
@@ -309,8 +309,8 @@ packages:
       - vue-router
     dev: false
 
-  /@govbr-ds/webcomponents@2.0.0-next.37(@govbr-ds/core@3.6.1):
-    resolution: {integrity: sha512-lpS2RGPOwWFiRN/sDN9iTCgIy8ZHTURy9SGp274fUeKyqoHRq511VY3VjL6i6ODR/uErJ3H0Bu5AaxZSoa3T1g==}
+  /@govbr-ds/webcomponents@2.0.0-next.40(@govbr-ds/core@3.6.1):
+    resolution: {integrity: sha512-NgwGo/Uz0/GqbWruQjtlqA8JGL7DOl3WybknTn91X7+hE1OFrnCsgxITvkv7GBZR7/9EQRcUO3gJezoD2knJsg==}
     peerDependencies:
       '@govbr-ds/core': 3.6.1
     dependencies:

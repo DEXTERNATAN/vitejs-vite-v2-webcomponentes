@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@govbr-ds/core": "^3.6.1",
-    "@govbr-ds/webcomponents": "^2.0.0-next.37",
-    "@govbr-ds/webcomponents-vue": "^2.0.0-next.37",
+    "@govbr-ds/webcomponents": "^2.0.0-next.40",
+    "@govbr-ds/webcomponents-vue": "^2.0.0-next.40",
     "axios": "^1.8.4",
     "chart.js": "^4.4.8",
     "markdown-it": "^14.1.0",
