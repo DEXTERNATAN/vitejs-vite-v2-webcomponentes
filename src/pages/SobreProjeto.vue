@@ -114,7 +114,7 @@
         >
           <h2 id="tech-wc" class="text-xl font-bold text-primary mb-2">Web Components</h2>
           <p class="mb-2">
-            <strong>Web Components</strong> (versão 2.0.0-next.35) - Biblioteca de
+            <strong>Web Components</strong> (versão 2.0.0-next.40) - Biblioteca de
             componentes reutilizáveis.
           </p>
           <p class="text-secondary">
